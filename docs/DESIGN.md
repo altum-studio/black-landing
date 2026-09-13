@@ -16,7 +16,7 @@
 - Color: `--color-ink #000000`, `--color-paper #ffffff`. Opacidades funcionales: texto secundario 85/80, terciario 60–70, inactivo 45–50 (≥ 3:1 en display), bordes 15–20 %.
 - Espaciado: escala Tailwind (4/8/16/24/32/48/64). Secciones `py-16 md:py-24`; contenedor 1440 px con `px-5 md:px-10 lg:px-14`.
 - Sin sombras. Sin radios salvo las morfologías del manual (semicírculo, círculo, cuadrado, cuarto).
-- Morfologías: el cliente prefirió la grilla de ventanas de la primera versión (cuartos, semicírculos, círculos y cuadrados sobre el render) a la tira de semielipses literal del manual; la versión literal quedó en el historial (commit 0e1e0d7) por si se retoma.
+- Morfologías: formato definitivo = página 11 del manual (imagen vista a través de columnas de semielipses que se angostan a la derecha). Descartados: bloques 2×2 de círculos, grilla aleatoria 6×4 y tira de semielipses blancas sobre el borde (todo en el historial).
 - Movimiento: `--ease-out-expo cubic-bezier(0.16,1,0.3,1)`. Lenis lerp 0.09. Sin reveals por sección.
 
 ## Components
@@ -24,7 +24,7 @@
 |---|---|---|
 | Meta (etiqueta de esquina) | "BLACK PASEO DE COMPRAS · SECCIÓN · 2026", reemplaza al eyebrow | live |
 | Logo / LogoTiles / GrupoBlack | SVG vectoriales extraídos del manual (págs. 4, 5 y 14), pintados con currentColor; `--logo-bg` para los cuadros y la caja de +BLACK | live |
-| PatternImage | Grilla 6×4 sobre el render (primera versión): celdas tapadas en negro con ventana de cuarto, semicírculo o círculo, o tapadas del todo; distribución por semilla. Elegida por el cliente frente a la tira literal del manual | live |
+| PatternImage | Intervención de imágenes del manual (pág. 11): 4 columnas que se angostan a la derecha (2.85 · 2.75 · 1.8 · 1), ventana = mitad derecha de una elipse anclada al borde izquierdo de cada celda, fila principal ≈ 2× la columna ancha y filas parciales. Máscara SVG; fuera de las ventanas, el color de la sección | live |
 | Stats (marquee) | Cinta de cifras (cifra Six Caps + palabra) en loop infinito, pausa en hover, estática con reduced-motion | live |
 | LineClaim | "TU LUGAR DE ——— ENCUENTRO" con línea, del manual y el cartel | live |
 | Button (solid/outline/dark/outlineDark) | 48 px, etiqueta 12 px, sin radio; foco con outline currentColor | live |
@@ -41,7 +41,7 @@
 | Texto inactivo a 35–40 % sobre blanco (< 3:1) | WCAG contraste | 2 | 45–50 % | done |
 | Web 3D oculto en mobile | Nielsen 7 (flexibilidad) | 1 | Enlace visible en todos los anchos | done |
 | Hover-only en índice de programas | Funciona sin hover | 0 | Ya respondía a tap y foco | n/a |
-| Mapa embebido con filtro invertido: etiquetas de Google en negativo | Nielsen 4 (consistencia) | 1 | Aceptado: legible y coherente con la paleta; botón "Abrir en Google Maps" | accepted |
+| Mapa de Google con filtro invertido | Nielsen 4 (consistencia) | 1 | Reemplazado por el mapa satelital del showroom virtual (Urbania, permite iframe); enlace "Cómo llegar en Google Maps" debajo | done |
 | Sin estados de carga en el form | Nielsen 1 | 0 | La acción es instantánea (abre WhatsApp); mensaje de confirmación con enlace de respaldo | n/a |
 | Precios ausentes obligan a un paso extra | Krug (fricción) | 2 | Decisión del cliente | pending |
 

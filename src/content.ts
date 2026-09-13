@@ -8,8 +8,8 @@ export const LINKS = {
   web3d: 'https://black.virtual2sold.com/',
   // PENDIENTE: confirmar handle de Instagram con el cliente. Vacío = no se muestra.
   instagram: '',
-  mapsEmbed:
-    'https://www.google.com/maps?q=Santa+Teresa+y+acceso+Barrio+San+Mat%C3%ADas,+Escobar,+Buenos+Aires&z=14&output=embed',
+  /** Mapa del showroom virtual (Urbania); permite embeberse (frame-ancestors *). */
+  mapsEmbed: 'https://black.virtual2sold.com/location/map?type=satellite',
   maps: 'https://www.google.com/maps/search/?api=1&query=Santa+Teresa+Barrio+San+Mat%C3%ADas+Escobar',
 }
 

@@ -1,72 +1,66 @@
 /**
  * Recursos gráficos de la landing.
  *
- * - PatternImage: "intervención de imágenes" de la primera versión. El render se ve a
- *   través de una grilla de módulos: algunas celdas quedan tapadas por el color de la
- *   sección con una ventana en forma de cuarto, semicírculo o círculo, o tapadas del
- *   todo (cuadrado). La distribución sale de una semilla, así cada imagen queda
- *   siempre igual y se puede ajustar cambiando `seed`.
+ * - PatternImage: "Intervención de imágenes" del manual (pág. 11). El render se ve a
+ *   través de columnas de semielipses: en cada celda la ventana es la mitad derecha de
+ *   una elipse anclada al borde izquierdo (lado plano a la izquierda, curva a la
+ *   derecha), con semiejes iguales al ancho de la columna y a la mitad de la fila.
+ *   Las columnas se angostan hacia la derecha (medido en el manual: 530 · 520 · 340 · 190),
+ *   la fila principal mide ~2 veces la columna más ancha y hay filas parciales arriba
+ *   y abajo. Fuera de las ventanas queda el color de la sección.
  * - LineClaim: "TU LUGAR DE ——— ENCUENTRO" con línea, del manual y el cartel.
  */
+import { useId } from 'react'
 
-type Shape = 'quarter' | 'half' | 'circle' | 'square'
+/** Secuencia de anchos de columna, de izquierda a derecha (manual pág. 9 y 11). */
+const COLS = [2.85, 2.75, 1.8, 1]
 
-const WINDOW: Record<Shape, string> = {
-  circle: 'rounded-full',
-  half: 'rounded-b-full',
-  quarter: 'rounded-br-full',
-  square: '',
+type Cell = { x: number; y: number; w: number; h: number; cx: number; cy: number; rx: number; ry: number }
+
+function buildCells(repeat: number) {
+  const cols: number[] = []
+  for (let i = 0; i < repeat; i++) cols.push(...COLS)
+  const W = cols.reduce((a, b) => a + b, 0)
+  const H = 1.94 * Math.max(...COLS)
+  const hp = 0.3 * H
+  const T = H + 2 * hp
+  const cells: Cell[] = []
+  let x = 0
+  for (const w of cols) {
+    cells.push({ x, y: 0, w, h: hp, cx: x, cy: hp, rx: w, ry: 2.6 * hp })
+    cells.push({ x, y: hp, w, h: H, cx: x, cy: hp + H / 2, rx: w, ry: H / 2 })
+    cells.push({ x, y: hp + H, w, h: hp, cx: x, cy: hp + H, rx: w, ry: 2.6 * hp })
+    x += w
+  }
+  return { W, T, cells }
 }
 
 export function PatternImage({
   src,
   alt,
-  cols = 6,
-  rows = 4,
-  seed = 3,
-  bg = 'bg-ink',
-  imgAspect = 16 / 9,
+  aspect = 16 / 9,
+  bg = '#000',
+  repeat,
   className = '',
   priority = false,
 }: {
   src: string
   alt: string
-  cols?: number
-  rows?: number
-  seed?: number
+  /** Proporción del contenedor (ancho / alto). */
+  aspect?: number
+  /** Color de la sección, que tapa lo que queda fuera de las ventanas. */
   bg?: string
-  /** Proporción real de la imagen, para que la ventana muestre exactamente lo que hay debajo. */
-  imgAspect?: number
+  /** Cuántas veces se repite la secuencia de 4 columnas. Por defecto, la que deja las
+   *  ventanas casi circulares para la proporción dada. */
+  repeat?: number
   className?: string
   priority?: boolean
 }) {
-  const cells: (Shape | null)[] = []
-  let x = seed * 7919 + 104729
-  for (let i = 0; i < cols * rows; i++) {
-    x = (x * 1103515245 + 12345) % 2147483648
-    const v = x % 10
-    cells.push(v < 5 ? null : v < 7 ? 'quarter' : v < 8 ? 'half' : v < 9 ? 'circle' : 'square')
-  }
-
-  // La imagen de fondo se ajusta con object-cover al contenedor (cols/rows). Cada ventana
-  // pinta el mismo recorte, calculado en unidades de celda, para que coincida con la base.
-  const ca = cols / rows
-  const dispW = imgAspect >= ca ? rows * imgAspect : cols
-  const dispH = imgAspect >= ca ? rows : cols / imgAspect
-  const slice = (i: number) => {
-    const c = i % cols
-    const r = Math.floor(i / cols)
-    const ox = -(c + (dispW - cols) / 2)
-    const oy = -(r + (dispH - rows) / 2)
-    return {
-      backgroundImage: `url(${src})`,
-      backgroundSize: `${dispW * 100}% ${dispH * 100}%`,
-      backgroundPosition: `${(ox / (1 - dispW)) * 100}% ${(oy / (1 - dispH)) * 100}%`,
-    }
-  }
-
+  const id = useId()
+  const n = repeat ?? Math.max(1, Math.round(0.55 * aspect))
+  const { W, T, cells } = buildCells(n)
   return (
-    <div className={`relative overflow-hidden ${className}`} style={{ aspectRatio: `${cols} / ${rows}` }}>
+    <div className={`relative overflow-hidden ${className}`} style={{ aspectRatio: `${aspect}` }}>
       <img
         src={src}
         alt={alt}
@@ -75,17 +69,22 @@ export function PatternImage({
         decoding="async"
         fetchPriority={priority ? 'high' : 'auto'}
       />
-      <div className="absolute inset-0 grid" style={{ gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))` }} aria-hidden>
-        {cells.map((s, i) => (
-          <div key={i} className="relative">
-            {s && (
-              <div className={`absolute inset-0 ${bg}`}>
-                {s !== 'square' && <div className={`w-full h-full ${WINDOW[s]}`} style={slice(i)} />}
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
+      {/* Capa del color de sección con las ventanas recortadas: el patrón se estira a la
+          proporción del contenedor, y como la regla es por celda, las ventanas siguen
+          siendo semielipses ajustadas a cada columna. */}
+      <svg className="absolute inset-0 w-full h-full" viewBox={`0 0 ${W} ${T}`} preserveAspectRatio="none" aria-hidden>
+        <defs>
+          <mask id={id} maskUnits="userSpaceOnUse" x="0" y="0" width={W} height={T}>
+            <rect x="0" y="0" width={W} height={T} fill="#fff" />
+            {cells.map((c, i) => (
+              <svg key={i} x={c.x} y={c.y} width={c.w} height={c.h} viewBox={`${c.x} ${c.y} ${c.w} ${c.h}`} preserveAspectRatio="none">
+                <ellipse cx={c.cx} cy={c.cy} rx={c.rx} ry={c.ry} fill="#000" />
+              </svg>
+            ))}
+          </mask>
+        </defs>
+        <rect x="0" y="0" width={W} height={T} fill={bg} mask={`url(#${id})`} />
+      </svg>
     </div>
   )
 }

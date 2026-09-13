@@ -35,18 +35,17 @@ export function Ubicacion() {
         <div className="relative w-full aspect-[4/3] sm:aspect-[16/9] lg:aspect-[21/8] bg-paper/5">
           <iframe
             src={LINKS.mapsEmbed}
-            title="Mapa de ubicación de BLACK Paseo de Compras"
+            title="Mapa satelital de la ubicación de BLACK Paseo de Compras (showroom virtual)"
             className="absolute inset-0 w-full h-full border-0"
             loading="lazy"
+            allow="fullscreen"
             referrerPolicy="no-referrer-when-downgrade"
-            style={{ filter: 'grayscale(1) invert(0.92) contrast(1.05)' }}
           />
-          <TextLink
-            href={LINKS.maps}
-            external
-            className="absolute bottom-4 left-5 md:left-10 lg:left-14 label bg-ink text-paper px-3 py-2 hover:bg-paper hover:text-ink hover:no-underline transition-colors"
-          >
-            Abrir en Google Maps
+        </div>
+        <div className="mx-auto max-w-[1440px] px-5 md:px-10 lg:px-14 py-6 flex flex-wrap justify-between gap-4 label text-paper/70">
+          <span>Mapa satelital del showroom virtual · Santa Teresa y acceso a Barrio San Matías, Escobar</span>
+          <TextLink href={LINKS.maps} external className="text-paper">
+            Cómo llegar en Google Maps
           </TextLink>
         </div>
       </div>

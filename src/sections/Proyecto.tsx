@@ -19,9 +19,7 @@ export function Proyecto() {
         <PatternImage
           src="/img/ext_3.webp"
           alt="Patio central con escaleras y locales en doble altura"
-          cols={6}
-          rows={4}
-          seed={5}
+          aspect={1.5}
           className="md:col-span-8"
         />
         <div className="md:col-span-4 grid gap-4 grid-cols-2 md:grid-cols-1">
@@ -115,9 +113,7 @@ export function Sustentable() {
         <PatternImage
           src="/img/ext_1.webp"
           alt="Terraza verde del rooftop"
-          cols={6}
-          rows={4}
-          seed={7}
+          aspect={1.5}
           className="lg:col-span-7 lg:order-first"
         />
         <Title lines={SUSTENTABLE.title} className="lg:col-span-5" />
