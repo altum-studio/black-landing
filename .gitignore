@@ -1,0 +1,24 @@
+# Dependencias y build
+node_modules
+dist
+dist-ssr
+*.local
+
+# Lockfile de bun (instalación local). El canónico del proyecto es package-lock.json (npm).
+bun.lock
+bun.lockb
+
+# Env
+.env
+.env.*
+!.env.example
+
+# Vercel
+.vercel
+
+# Editor / SO
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.log

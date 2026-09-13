@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+/* ───────────────────────────────────────────────────────────────────────────
+   Manual de Marca BLACK 2026: paleta sólo #000000 / #FFFFFF.
+   Display: Six Caps (mayúsculas, condensada). Cuerpo: Barlow.
+   ─────────────────────────────────────────────────────────────────────────── */
+@theme {
+  --font-display: "Six Caps", "Impact", "Arial Narrow", sans-serif;
+  --font-sans: "Barlow", system-ui, -apple-system, sans-serif;
+
+  --color-ink: #000000;
+  --color-paper: #ffffff;
+
+  --tracking-label: 0.18em;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  @apply bg-ink text-paper font-sans antialiased;
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+::selection {
+  background: #fff;
+  color: #000;
+}
+
+/* Titulares display: Six Caps es muy condensada, el line-height va apretado. */
+.display {
+  @apply font-display uppercase;
+  line-height: 0.82;
+  letter-spacing: 0.005em;
+  font-weight: 400;
+}
+
+/* Etiquetas mono-estilo del manual (mayúscula, tracking ancho, chicas). */
+.label {
+  @apply font-sans uppercase text-[11px] font-medium;
+  letter-spacing: var(--tracking-label);
+}
+
+/* Cuadros de letras del logo display: "P A S E O / D E / C O M P R A S". */
+.tile {
+  @apply inline-flex items-center justify-center font-sans font-medium uppercase;
+  width: 1.55em;
+  height: 1.55em;
+  font-size: 0.9rem;
+}
+
+/* Inputs del formulario: línea inferior blanca, sin cajas. */
+.field {
+  @apply w-full bg-transparent border-0 border-b border-paper/40 py-3 text-paper placeholder:text-paper/40 focus:outline-none focus:border-paper transition-colors;
+  border-radius: 0;
+}
+select.field option {
+  color: #000;
+  background: #fff;
+}
+
+/* Aparición suave al hacer scroll. */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
