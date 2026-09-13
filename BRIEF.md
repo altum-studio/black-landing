@@ -30,7 +30,7 @@ Fuentes: Notion Altum Studio HQ (cliente CLI-1, proyecto PRJ-1), Drive (Press Ki
 
 ## 3. Ubicación
 
-- Calle Santa Teresa, acceso al Barrio San Matías, a 50 m del Camino de los Lagos. Escobar, Buenos Aires.
+- Av. de los Lagos, Belén de Escobar, Partido de Escobar (ficha de Google Maps "Paseo comercial Black", -34.3674, -58.7548). El press kit decía "calle Santa Teresa": incorrecto.
 - Distancias: Fincas de Lago 1 km · San Matías 2 km · El Cantón 2 km · Puertos del Lago 3 km · Golf Maschwitz Club 4 km.
 - Idea rectora: zona que creció en densidad pero no en oferta comercial.
 

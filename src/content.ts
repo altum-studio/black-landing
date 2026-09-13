@@ -10,7 +10,8 @@ export const LINKS = {
   instagram: '',
   /** Mapa del showroom virtual (Urbania); permite embeberse (frame-ancestors *). */
   mapsEmbed: 'https://black.virtual2sold.com/location/map?type=satellite',
-  maps: 'https://www.google.com/maps/search/?api=1&query=Santa+Teresa+Barrio+San+Mat%C3%ADas+Escobar',
+  /** Ficha de Google Maps del proyecto ("Paseo comercial Black"). */
+  maps: 'https://maps.app.goo.gl/eijdmFAH4Dit6ae7A',
 }
 
 export const WHATSAPP_NUMBER =
@@ -88,7 +89,7 @@ export const MIX = [
 export const UBICACION = {
   title: ['Llenamos', 'un vacío premium.'],
   body:
-    'Sobre calle Santa Teresa, en el acceso al Barrio San Matías, a 50 m del Camino de los Lagos. Una zona que creció en densidad pero no en oferta comercial.',
+    'Sobre la Av. de los Lagos, en Belén de Escobar, a 1 km de Fincas de Lago y a 2 km de San Matías. Una zona que creció en densidad pero no en oferta comercial.',
   distancias: [
     { lugar: 'Fincas de Lago', km: '1 km' },
     { lugar: 'San Matías', km: '2 km' },

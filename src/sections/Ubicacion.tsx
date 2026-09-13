@@ -25,14 +25,14 @@ export function Ubicacion() {
                 ))}
               </tbody>
             </table>
-            <p className="label mt-4 text-paper/70">Santa Teresa · acceso Barrio San Matías · a 50 m del Camino de los Lagos</p>
+            <p className="label mt-4 text-paper/70">Av. de los Lagos · Belén de Escobar · Partido de Escobar</p>
           </div>
         </div>
       </Section>
 
       {/* Mapa a todo el ancho de la pantalla, fuera del contenedor de la sección. */}
-      <div className="bg-ink pt-8 md:pt-10">
-        <div className="relative w-full aspect-[4/3] sm:aspect-[16/9] lg:aspect-[21/8] bg-paper/5">
+      <div className="bg-ink pt-12 md:pt-16">
+        <div className="relative w-full aspect-[4/3] sm:aspect-[16/9] lg:aspect-[2/1] bg-paper/5">
           <iframe
             src={LINKS.mapsEmbed}
             title="Mapa satelital de la ubicación de BLACK Paseo de Compras (showroom virtual)"
@@ -43,7 +43,7 @@ export function Ubicacion() {
           />
         </div>
         <div className="mx-auto max-w-[1440px] px-5 md:px-10 lg:px-14 py-6 flex flex-wrap justify-between gap-4 label text-paper/70">
-          <span>Mapa satelital del showroom virtual · Santa Teresa y acceso a Barrio San Matías, Escobar</span>
+          <span>Mapa satelital del showroom virtual · Av. de los Lagos, Belén de Escobar</span>
           <TextLink href={LINKS.maps} external className="text-paper">
             Cómo llegar en Google Maps
           </TextLink>

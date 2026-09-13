@@ -21,4 +21,4 @@
 | Inversión | "Locales de 50 a 138 m². Venta en pozo." | Concreto ✓ | live |
 | Contacto | "Hablemos de tu inversión." | Simple ✓ | live |
 | Commander's Intent | "En Escobar falta un paseo comercial premium; BLACK lo construye y vos podés ser dueño de un local." | — | propuesta |
-| Stat humana | "A 50 m del Camino de los Lagos, a 1 km de Fincas de Lago" | Sinatra ✓ | live |
+| Stat humana | "Sobre la Av. de los Lagos, a 1 km de Fincas de Lago" | Sinatra ✓ | live |
