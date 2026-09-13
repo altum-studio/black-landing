@@ -108,28 +108,6 @@ export const SUSTENTABLE = {
   ],
 }
 
-export const INVERSION = {
-  title: ['Locales de 50 a 138 m².', 'Venta en pozo.'],
-  body:
-    'Unidades combinables en naves independientes, con posiciones de borde y medio en cada nivel. Consultá la lista de precios vigente y la disponibilidad en tiempo real.',
-  tipologias: [
-    { title: 'Local medio', spec: '49,7 m²', body: 'Planta baja y niveles superiores. Ideal para retail y servicios.', img: '/img/nave_4_medio.webp' },
-    { title: 'Local borde', spec: '51,5 m²', body: 'Doble frente y mayor exposición sobre circulaciones.', img: '/img/nave_4_esquina.webp' },
-    { title: 'Combinables', spec: 'hasta 138 m²', body: 'Locales unificables para gastronomía, anclas y marcas.', img: '/img/nave_5_grande_a.webp' },
-    { title: 'Storage', spec: '+200 unidades', body: 'Guardado privado en subsuelo, distintas medidas.', img: '/img/storage_ph.webp' },
-  ],
-  objetivos: ['Renta', 'Uso propio', 'Revalorización', 'Diversificar capital'],
-}
-
-/** Vistas axonométricas por nivel (Renders_Finales p-1..p3). Descripciones a validar con el cliente. */
-export const NIVELES = [
-  { id: -1, label: 'Subsuelo', body: '230 cocheras bajo nivel y storage privado.' },
-  { id: 0, label: 'Planta baja', body: 'Locales retail en naves independientes y market.' },
-  { id: 1, label: 'Nivel 1', body: 'Locales comerciales sobre la plataforma común.' },
-  { id: 2, label: 'Nivel 2', body: 'Locales comerciales y espacios semicubiertos.' },
-  { id: 3, label: 'Rooftop', body: 'Patio de comidas, foyer de cines en doble altura y rooftop.' },
-]
-
 export const FORM = {
   title: ['Hablemos', 'de tu inversión.'],
   body: 'Dejanos tus datos y un asesor comercial te contacta por WhatsApp con la lista de precios, planos y disponibilidad.',

@@ -6,7 +6,6 @@ import { trackCta } from '@/lib/tracking'
 const ITEMS = [
   { id: 'proyecto', label: 'Proyecto' },
   { id: 'ubicacion', label: 'Ubicación' },
-  { id: 'inversion', label: 'Inversión' },
 ]
 
 /* Qué ítem de la nav representa a cada sección de la página ("estás acá"). */
@@ -15,7 +14,6 @@ const SECTION_TO_ITEM: Record<string, string> = {
   mix: 'proyecto',
   ubicacion: 'ubicacion',
   sustentable: '',
-  inversion: 'inversion',
   contacto: '',
 }
 

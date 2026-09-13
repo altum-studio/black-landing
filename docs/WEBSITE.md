@@ -1,7 +1,7 @@
 # Website
 
 ## Sitemap
-- `/` landing única. Anclas: #proyecto · #mix · #ubicacion · #sustentable · #inversion · #contacto.
+- `/` landing única. Anclas: #proyecto · #mix · #ubicacion · #sustentable · #contacto.
 - Externo: showroom 3D (black.virtual2sold.com), abre en pestaña nueva.
 
 ## Page Briefs
@@ -16,8 +16,8 @@
 |---|---|---|---|
 | Trust: "¿quién está detrás?" | Desarrolla Grupo +Black, comercializa Coldwell Banker (footer y contacto). El módulo de los cinco socios se quitó a pedido del cliente | #contacto, footer | live |
 | Trust: "¿es real / avanza?" | Renders finales + showroom 3D; falta prueba de avance de obra | hero, #proyecto | falta: fotos/reels de obra |
-| Price: "¿cuánto?" | Lista de precios por WhatsApp; tipologías con m² | #inversion, form | pendiente decisión cliente |
-| Fit: "¿me sirve a mí?" | Objetivos (renta, uso propio, revalorización, diversificar) + tipologías + niveles | #inversion, form | live |
+| Price: "¿cuánto?" | Lista de precios por WhatsApp (el módulo de tipologías se quitó a pedido del cliente) | form | pendiente decisión cliente |
+| Fit: "¿me sirve a mí?" | Objetivos (renta, uso propio, revalorización, diversificar) en el form; medidas en la cinta de cifras y el mix | form, cinta | live |
 | Timing: "¿cuándo?" | Entrega estimada mayo 2028, venta en pozo | ficha, hero lead | live |
 | Effort: "¿qué tengo que hacer?" | Form corto de 5 campos → WhatsApp con mensaje armado | #contacto | live |
 | Social proof | Marcas confirmadas, testimonios de inversores | — | falta (cliente) |

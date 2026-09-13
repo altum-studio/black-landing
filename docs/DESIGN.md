@@ -30,7 +30,6 @@
 | Button (solid/outline/dark/outlineDark) | 48 px, etiqueta 12 px, sin radio; foco con outline currentColor | live |
 | TextLink | Texto + flecha SVG, subrayado en hover | live |
 | Índice + imagen (Mix) | Lista display como control; imagen sticky que responde a hover/foco/tap | live |
-| Tabs de niveles | Lista display con marcador cuadrado; imagen 16:9 | live |
 | Form | Campos de línea inferior, mensajes en castellano, WhatsApp síncrono al enviar | live |
 
 ## UX Audit Findings

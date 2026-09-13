@@ -4,7 +4,7 @@ import { Section, TextLink, Title } from '@/components/Brand'
 export function Ubicacion() {
   return (
     <>
-      <Section id="ubicacion" meta="Ubicación estratégica" className="!pb-0">
+      <Section id="ubicacion" meta="Ubicación estratégica" bottom={false}>
         <div className="mt-10 grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-7">
             <Title lines={UBICACION.title} />
@@ -31,7 +31,7 @@ export function Ubicacion() {
       </Section>
 
       {/* Mapa a todo el ancho de la pantalla, fuera del contenedor de la sección. */}
-      <div className="bg-ink pt-10 md:pt-12">
+      <div className="bg-ink pt-8 md:pt-10">
         <div className="relative w-full aspect-[4/3] sm:aspect-[16/9] lg:aspect-[21/8] bg-paper/5">
           <iframe
             src={LINKS.mapsEmbed}

@@ -119,19 +119,22 @@ export function Section({
   id,
   meta,
   tone = 'dark',
+  bottom = true,
   className = '',
   children,
 }: {
   id?: string
   meta: string
   tone?: 'dark' | 'light'
+  /** false: sin padding inferior (cuando sigue un bloque a sangre, como el mapa). */
+  bottom?: boolean
   className?: string
   children: ReactNode
 }) {
   const t = tone === 'dark' ? 'bg-ink text-paper' : 'bg-paper text-ink'
   return (
     <section id={id} className={`${t} ${className}`}>
-      <div className="mx-auto max-w-[1440px] px-5 md:px-10 lg:px-14 py-16 md:py-24">
+      <div className={`mx-auto max-w-[1440px] px-5 md:px-10 lg:px-14 pt-16 md:pt-24 ${bottom ? 'pb-16 md:pb-24' : 'pb-0'}`}>
         <Meta left={meta} />
         {children}
       </div>

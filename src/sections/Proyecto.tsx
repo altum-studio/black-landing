@@ -108,22 +108,23 @@ export function Mix() {
 
 export function Sustentable() {
   return (
-    <Section id="sustentable" meta="Rooftop y sostenibilidad">
+    <Section id="sustentable" meta="Rooftop y sostenibilidad" tone="light">
       <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:items-end">
         <PatternImage
           src="/img/ext_1.webp"
           alt="Terraza verde del rooftop"
           aspect={1.5}
+          bg="#fff"
           className="lg:col-span-7 lg:order-first"
         />
         <Title lines={SUSTENTABLE.title} className="lg:col-span-5" />
       </div>
 
-      <ul className="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-x-8 border-t border-paper/15">
+      <ul className="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-x-8 border-t border-ink/15">
         {SUSTENTABLE.items.map((it) => (
-          <li key={it.title} className="py-8 border-b border-paper/15 lg:border-b-0">
+          <li key={it.title} className="py-8 border-b border-ink/15 lg:border-b-0">
             <h3 className="display text-5xl">{it.title}</h3>
-            <p className="mt-3 text-paper/75 leading-relaxed max-w-xs">{it.body}</p>
+            <p className="mt-3 font-light text-ink/80 leading-relaxed max-w-xs">{it.body}</p>
           </li>
         ))}
       </ul>
