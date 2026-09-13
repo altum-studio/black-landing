@@ -1,5 +1,6 @@
 import { LINKS, UBICACION } from '@/content'
-import { PatternImage, Section, TextLink, Title } from '@/components/Brand'
+import { Section, TextLink, Title } from '@/components/Brand'
+import { PatternImage } from '@/components/Patterns'
 
 export function Ubicacion() {
   return (
@@ -46,7 +47,7 @@ export function Ubicacion() {
             Abrir en Google Maps
           </TextLink>
         </div>
-        <PatternImage src="/img/vista_vuelo_2.webp" alt="Vista aérea del proyecto entre el verde de Escobar" edge="right" width="25%" />
+        <PatternImage src="/img/vista_vuelo_2.webp" alt="Vista aérea del proyecto entre el verde de Escobar" edge="right" />
       </div>
     </Section>
   )

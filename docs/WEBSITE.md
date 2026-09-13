@@ -30,12 +30,13 @@
 | Mix y tipologías como grillas de cards idénticas | 2 | Mix → índice tipográfico con imagen que responde; tipologías → catálogo sin cajas | done |
 | Banda de métricas tipo plantilla (tile + label) | 1 | Una línea de cifras + palabra, estilo portada del press kit | done |
 | Fade-in idéntico en todas las secciones | 2 | Se elimina; única entrada coreografiada en el hero | done |
-| Patrones pseudoaleatorios | 1 | Tira de módulos compuesta en bloques 2×2 (círculo / dos círculos), patrón de 12×2 hecho a mano | done |
+| Patrones que no seguían el manual (bloques 2×2 inventados) | 3 | Se midieron las páginas Patrones e Intervención y el cartel: tira de columnas 1·1.8·2.7·3.6 con semielipses ancladas al borde derecho, patrón radial de celdas crecientes, ficha tipográfica con cuartos de círculo, claim con línea | done |
 | Glifos "↗" como ícono | 1 | Ícono SVG de un trazo en todos los enlaces | done |
 | Sin "estás acá" en la nav | 1 | Scroll-spy con subrayado + aria-current | done |
 | Validación del form en idioma del navegador y sin corrección concreta | 2 | Mensajes en castellano con ejemplo; patrón para WhatsApp | done |
 | Web 3D no accesible desde nav en mobile | 1 | Enlace visible en todos los anchos | done |
 | Imágenes JPG 6,4 MB, hero único de 2400 px | 2 | WebP + srcset del hero + preload | done |
+| Copy de Seguros sobreprometía ("cobertura integral… seguridad jurídica") | 2 | Se quita; los cinco socios "se potencian entre sí" | done |
 | Sin prueba social ni avance de obra | 3 | Pedir al cliente marcas confirmadas y material de obra | pendiente |
 | Precios ausentes | 2 | Decisión del cliente | pendiente |
 

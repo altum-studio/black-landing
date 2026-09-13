@@ -1,18 +1,22 @@
 import { FOOTER, LINKS } from '@/content'
-import { GrupoBlack, LogoTiles, PatternBand, TextLink } from '@/components/Brand'
+import { GrupoBlack, LogoTiles, TextLink } from '@/components/Brand'
+import { LineClaim, RadialPattern } from '@/components/Patterns'
 
 export function Footer() {
   return (
     <footer className="bg-ink text-paper">
-      <PatternBand fill="bg-paper" />
       <div className="mx-auto max-w-[1440px] px-5 md:px-10 lg:px-14 py-16">
-        <div className="grid gap-12 md:grid-cols-12 md:items-start">
+        <LineClaim className="text-paper/80" />
+
+        <div className="mt-14 grid gap-12 md:grid-cols-12 md:items-start">
+          {/* Patrón radial del manual (blanco sobre negro), como en la pág. Patrones. */}
           <div className="md:col-span-5">
-            <LogoTiles />
+            <RadialPattern fill="#fff" className="w-full aspect-square max-w-[520px]" />
+            <LogoTiles className="mt-10" />
             <p className="label mt-6 text-paper/60">Escobar · Buenos Aires · Argentina</p>
           </div>
 
-          <div className="md:col-span-7 grid sm:grid-cols-3 gap-8">
+          <div className="md:col-span-7 grid sm:grid-cols-3 gap-8 md:pt-2">
             <div>
               <p className="label text-paper/60 mb-3">Desarrolla</p>
               <GrupoBlack />

@@ -1,5 +1,6 @@
 import { GRUPO } from '@/content'
-import { GrupoBlack, PatternImage, Section, Title } from '@/components/Brand'
+import { GrupoBlack, Section, Title } from '@/components/Brand'
+import { PatternImage } from '@/components/Patterns'
 
 export function Grupo() {
   return (
@@ -21,7 +22,7 @@ export function Grupo() {
           <li key={s.n} className="grid gap-2 md:gap-6 md:grid-cols-12 py-6 border-b border-ink/15 items-baseline">
             <span className="display text-5xl md:col-span-1 leading-none">{s.n}</span>
             <h3 className="md:col-span-4 text-xl font-semibold uppercase tracking-[0.08em]">{s.title}</h3>
-            <p className="md:col-span-7 font-light text-ink/80 text-lg leading-relaxed">{s.body}</p>
+            {s.body && <p className="md:col-span-7 font-light text-ink/80 text-lg leading-relaxed">{s.body}</p>}
           </li>
         ))}
       </ol>
@@ -40,8 +41,7 @@ export function Grupo() {
           src="/img/ext_4.webp"
           alt="Fachada de chapa trapezoidal negra con vegetación"
           edge="left"
-          width="25%"
-          bg="bg-paper"
+          width="34%"
           className="md:col-span-7"
         />
         <div className="md:col-span-5 md:pl-6">

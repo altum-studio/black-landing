@@ -27,11 +27,27 @@ export const HERO = {
   ctaSecondary: 'Recorrer en 3D',
 }
 
-export const STATS = [
-  { value: '17.000', unit: 'm²', label: 'cubiertos' },
-  { value: '125', unit: '', label: 'locales' },
-  { value: '450', unit: '', label: 'cocheras' },
-  { value: '05·2028', unit: '', label: 'entrega' },
+/**
+ * Ficha tipográfica (cartel de obra): palabras a dos escalas y cuartos de círculo
+ * como signos. `xl` cifra grande, `md` palabra, `sm` dos líneas chicas.
+ */
+export type FichaToken = { text: string; size: 'xl' | 'md' | 'sm' } | { shape: 'tl' | 'tr' | 'bl' | 'br' }
+export const FICHA: FichaToken[] = [
+  { text: '125', size: 'xl' },
+  { text: 'Locales\ncomerciales', size: 'sm' },
+  { shape: 'tr' },
+  { text: 'Storage', size: 'md' },
+  { text: 'Cines', size: 'md' },
+  { shape: 'bl' },
+  { text: 'Gimnasio\nsupermercado', size: 'sm' },
+  { text: '450', size: 'xl' },
+  { text: 'Cocheras', size: 'md' },
+  { shape: 'br' },
+  { text: 'Cowork\nrooftop', size: 'sm' },
+  { text: '17.000', size: 'xl' },
+  { text: 'm²', size: 'md' },
+  { shape: 'tl' },
+  { text: 'Entrega\nmayo 2028', size: 'sm' },
 ]
 
 export const PROYECTO = {
@@ -96,14 +112,14 @@ export const UBICACION = {
 export const GRUPO = {
   title: ['No somos una', 'desarrolladora más.'],
   body:
-    'Somos un ecosistema de cinco socios estratégicos que cubren todo el ciclo de vida de un proyecto inmobiliario. Al integrar verticalmente cada eslabón, eliminamos sobrecostos de intermediarios y mitigamos los riesgos que frenan otras obras.',
+    'Somos un ecosistema de cinco socios estratégicos que se potencian entre sí y cubren todo el ciclo de vida de un proyecto inmobiliario. Al integrar verticalmente cada eslabón, eliminamos sobrecostos de intermediarios y mitigamos los riesgos que frenan otras obras.',
   claim: 'El inversor no compra metros cuadrados: se asocia a un sistema probado de eficiencia y respaldo profesional.',
   socios: [
     { n: '01', title: 'Arquitectura', body: 'Diseño vanguardista y optimización de espacios comerciales.' },
     { n: '02', title: 'Construcción', body: 'Ejecución directa de obra. Plazos y calidad garantizados.' },
     { n: '03', title: 'Insumos', body: 'Provisión propia de aberturas y materiales críticos.' },
     { n: '04', title: 'Finanzas', body: 'Estructuración fiscal eficiente y transparencia en el manejo de fondos.' },
-    { n: '05', title: 'Seguros', body: 'Cobertura integral de riesgos y seguridad jurídica al inversor.' },
+    { n: '05', title: 'Seguros', body: '' },
   ],
   kpis: [
     { value: '0', label: 'intermediarios en la cadena' },

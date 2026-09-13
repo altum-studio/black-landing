@@ -2,7 +2,7 @@
 
 ## Design Direction
 - Mundo visual: Manual de Marca BLACK 2026. Póster editorial en blanco y negro puros; la tipografía es la arquitectura de la página.
-- Signature moment: el hero. Render a sangre, titular "TU LUGAR / DE ENCUENTRO" en Six Caps a escala de viewport que sube línea por línea, y la tira de módulos del manual que se imprime celda a celda sobre el borde derecho, dejando ver el render a través de círculos.
+- Signature moment: el hero. Render a sangre, titular "TU LUGAR / DE ENCUENTRO" en Six Caps a escala de viewport que sube línea por línea, y la tira de semielipses blancas del manual (pág. Intervención de imágenes) que se imprime columna a columna sobre el borde derecho del render, como en el panel del cartel de obra.
 - Referencias (top-design): Locomotive (escala display extrema, entrada por líneas, expo-out), Studio Freight (listas tipográficas con línea inferior, Lenis), AREA 17 (composición editorial, imagen a través de máscaras).
 - Lo que NO se adopta de las referencias: negros/blancos "cálidos" (#0a0a0a / #fafaf9) y acento de color. El manual fija #000000 / #FFFFFF y sin acento; el brief manda.
 
@@ -15,7 +15,8 @@
 ## Tokens
 - Color: `--color-ink #000000`, `--color-paper #ffffff`. Opacidades funcionales: texto secundario 85/80, terciario 60–70, inactivo 45–50 (≥ 3:1 en display), bordes 15–20 %.
 - Espaciado: escala Tailwind (4/8/16/24/32/48/64). Secciones `py-16 md:py-24`; contenedor 1440 px con `px-5 md:px-10 lg:px-14`.
-- Sin sombras. Sin radios salvo las morfologías del manual (círculo, semicírculo, cuarto).
+- Sin sombras. Sin radios salvo las morfologías del manual (semicírculo, círculo, cuadrado, cuarto).
+- Regla de las morfologías: cada celda de una grilla aloja una elipse con semiejes iguales a las medidas de la celda, anclada al borde interior; queda un cuarto, una mitad o la elipse entera según la posición. Nunca formas sueltas ni aleatorias.
 - Movimiento: `--ease-out-expo cubic-bezier(0.16,1,0.3,1)`. Lenis lerp 0.09. Sin reveals por sección.
 
 ## Components
@@ -23,8 +24,10 @@
 |---|---|---|
 | Logo / LogoTiles / GrupoBlack | Tipográficos, sin asset: Six Caps + Barlow + cuadros de letras | live |
 | Meta (etiqueta de esquina) | "BLACK PASEO DE COMPRAS · SECCIÓN · 2026", reemplaza al eyebrow | live |
-| ModuleStrip / PatternImage | Tira de módulos en bloques 2×2 con máscaras radiales; celdas del color de la sección | live |
-| PatternBand | Patrón 12×2 hecho a mano, sobre el footer | live |
+| StripPattern / PatternImage | Tira de columnas que se ensanchan (1 · 1.8 · 2.7 · 3.6), cada una con media elipse anclada a su borde derecho; medida en el manual (140/248/378 px, fila 756 px). Blanca sobre imágenes y bordes | live |
+| RadialPattern | Grilla de celdas que crecen hacia el centro (0.18 · 0.33 · 0.5 · 1); cuartos en esquinas, mitades en bordes, elipse entera al centro, calle entre celdas. Banda del footer | live |
+| Ficha (Quarter) | Composición tipográfica del cartel: palabras Six Caps a dos escalas con cuartos de círculo como signos | live |
+| LineClaim | "TU LUGAR DE ——— ENCUENTRO" con línea, del manual y el cartel | live |
 | Button (solid/outline/dark/outlineDark) | 48 px, etiqueta 12 px, sin radio; foco con outline currentColor | live |
 | TextLink | Texto + flecha SVG, subrayado en hover | live |
 | Índice + imagen (Mix) | Lista display como control; imagen sticky que responde a hover/foco/tap | live |

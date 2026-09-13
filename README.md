@@ -26,7 +26,8 @@ npm run preview
 ```
 src/
 ├── content.ts            # TODO el copy y los datos (press kit, brochure, listado de unidades)
-├── components/Brand.tsx  # Logo, LogoTiles, GrupoBlack, ModuleStrip, PatternImage, PatternBand, Button, TextLink, Section, Title
+├── components/Brand.tsx  # Logo, LogoTiles, GrupoBlack, Button, TextLink, Section, Title
+├── components/Patterns.tsx # StripPattern, RadialPattern, PatternImage, Quarter, LineClaim (morfologías del manual)
 ├── sections/             # Nav · Hero+Stats · Proyecto+Mix+Sustentable · Ubicacion · Grupo · Inversion · Contacto · Footer
 ├── lib/lead.ts           # armado del mensaje de WhatsApp + POST opcional a un endpoint
 └── lib/tracking.ts       # GA4 + Meta Pixel (sólo si hay env vars)

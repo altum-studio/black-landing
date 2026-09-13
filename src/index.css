@@ -113,16 +113,6 @@ body {
     background: #ffffff;
   }
 
-  /* Tira de módulos: contenedor de consulta para que las celdas sean cuadradas. */
-  .strip {
-    container-type: size;
-  }
-  .strip-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-auto-rows: 50cqw;
-    width: 100%;
-  }
 }
 
 /* ── El único momento de entrada: coreografía de carga del hero. ──
@@ -170,9 +160,9 @@ body {
     opacity: 1;
   }
 }
-.strip-anim .strip-grid > div {
+.strip-anim ellipse {
   animation: print 0.5s var(--ease-out-expo) both;
-  animation-delay: calc(0.45s + var(--i) * 35ms);
+  animation-delay: calc(0.45s + var(--i) * 60ms);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -181,7 +171,7 @@ body {
   }
   .rise > span,
   .enter,
-  .strip-anim .strip-grid > div {
+  .strip-anim ellipse {
     animation: none;
   }
 }
