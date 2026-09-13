@@ -11,27 +11,27 @@ export function Ubicacion() {
             <p className="mt-8 max-w-lg text-lg leading-relaxed text-paper/85">{UBICACION.body}</p>
           </div>
 
-          <div className="lg:col-span-5 lg:pt-6">
+          <div className="lg:col-span-5 lg:pt-8">
             <table className="w-full border-t border-paper/20">
-              <caption className="label text-left pb-4 text-paper/70">Distancias desde BLACK</caption>
+              <caption className="label text-left pb-3 text-paper/70">Distancias desde BLACK</caption>
               <tbody>
                 {UBICACION.distancias.map((d) => (
                   <tr key={d.lugar} className="border-b border-paper/20">
-                    <th scope="row" className="py-3 text-left text-lg font-normal">
+                    <th scope="row" className="py-2 text-left text-base font-normal">
                       {d.lugar}
                     </th>
-                    <td className="py-3 text-right display text-5xl leading-none tabular-nums">{d.km}</td>
+                    <td className="py-2 text-right display text-3xl leading-none tabular-nums">{d.km}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
-            <p className="label mt-6 text-paper/70">Santa Teresa · acceso Barrio San Matías · a 50 m del Camino de los Lagos</p>
+            <p className="label mt-4 text-paper/70">Santa Teresa · acceso Barrio San Matías · a 50 m del Camino de los Lagos</p>
           </div>
         </div>
       </Section>
 
       {/* Mapa a todo el ancho de la pantalla, fuera del contenedor de la sección. */}
-      <div className="bg-ink pt-14 md:pt-20">
+      <div className="bg-ink pt-10 md:pt-12">
         <div className="relative w-full aspect-[4/3] sm:aspect-[16/9] lg:aspect-[21/8] bg-paper/5">
           <iframe
             src={LINKS.mapsEmbed}
