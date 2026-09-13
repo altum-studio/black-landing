@@ -261,7 +261,7 @@ export function Reveal({ children, className = '' }: { children: ReactNode; clas
       (entries) => {
         for (const e of entries) if (e.isIntersecting) el.classList.add('is-in')
       },
-      { rootMargin: '0px 0px -10% 0px', threshold: 0.08 },
+      { rootMargin: '0px 0px 15% 0px', threshold: 0 },
     )
     io.observe(el)
     return () => io.disconnect()
