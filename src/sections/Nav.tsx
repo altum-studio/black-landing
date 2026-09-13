@@ -1,10 +1,23 @@
+import { useEffect, useState } from 'react'
 import { LINKS } from '@/content'
 import { Button, Logo } from '@/components/Brand'
 import { trackCta } from '@/lib/tracking'
 
 export function Nav() {
+  const [scrolled, setScrolled] = useState(false)
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
   return (
-    <nav className="fixed inset-x-0 top-0 z-50 mix-blend-difference text-paper">
+    <nav
+      className={`fixed inset-x-0 top-0 z-50 text-paper transition-colors duration-300 ${
+        scrolled ? 'bg-ink/90 backdrop-blur-md border-b border-paper/10' : 'bg-gradient-to-b from-ink/60 to-transparent'
+      }`}
+    >
       <div className="mx-auto max-w-[1440px] px-5 md:px-10 lg:px-14 h-20 flex items-center justify-between gap-6">
         <a href="#top" aria-label="BLACK Paseo de Compras · inicio">
           <Logo size="sm" />

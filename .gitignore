@@ -22,3 +22,4 @@ bun.lockb
 .idea
 .DS_Store
 *.log
+.env*
