@@ -196,7 +196,7 @@ export function Button({
   children: ReactNode
   href?: string
   onClick?: () => void
-  variant?: 'solid' | 'outline' | 'ghost'
+  variant?: 'solid' | 'outline' | 'ghost' | 'dark' | 'outlineDark'
   type?: 'button' | 'submit'
   className?: string
   target?: string
@@ -207,6 +207,8 @@ export function Button({
     solid: 'bg-paper text-ink hover:bg-paper/85',
     outline: 'border border-paper text-paper hover:bg-paper hover:text-ink',
     ghost: 'text-paper underline underline-offset-8 decoration-paper/40 hover:decoration-paper px-0',
+    dark: 'bg-ink text-paper hover:bg-ink/85',
+    outlineDark: 'border border-ink text-ink hover:bg-ink hover:text-paper',
   }[variant]
   if (href)
     return (

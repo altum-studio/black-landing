@@ -86,16 +86,10 @@ export function Inversion() {
       </div>
 
       <div className="mt-14 flex flex-wrap gap-3">
-        <Button href="#contacto" className="bg-ink text-paper hover:bg-ink/85" onClick={() => trackCta('inversion_precios')}>
+        <Button href="#contacto" variant="dark" onClick={() => trackCta('inversion_precios')}>
           Pedir lista de precios <Arrow />
         </Button>
-        <Button
-          href={LINKS.web3d}
-          target="_blank"
-          className="border border-ink text-ink hover:bg-ink hover:text-paper"
-          variant="ghost"
-          onClick={() => trackCta('inversion_web3d')}
-        >
+        <Button href={LINKS.web3d} target="_blank" variant="outlineDark" onClick={() => trackCta('inversion_web3d')}>
           Ver disponibilidad en 3D <Arrow />
         </Button>
       </div>
