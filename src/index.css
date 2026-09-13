@@ -92,16 +92,6 @@ body {
     line-height: 1.4;
   }
 
-  /* Cuadros de letras del logo display: "P A S E O / D E / C O M P R A S".
-     Escalan con el font-size del contenedor. */
-  .tile {
-    @apply inline-flex items-center justify-center font-sans font-medium uppercase;
-    font-size: 0.16em;
-    width: 1.7em;
-    height: 1.7em;
-    letter-spacing: 0;
-  }
-
   /* Inputs: línea inferior, sin cajas. */
   .field {
     @apply w-full bg-transparent border-0 border-b border-paper/40 py-3 text-paper placeholder:text-paper/45 focus:outline-none focus:border-paper transition-colors;
@@ -113,6 +103,16 @@ body {
     background: #ffffff;
   }
 
+  /* Tira de módulos con ventanas: contenedor de consulta para que las celdas sean cuadradas. */
+  .strip {
+    container-type: size;
+  }
+  .strip-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 50cqw;
+    width: 100%;
+  }
 }
 
 /* ── El único momento de entrada: coreografía de carga del hero. ──
@@ -126,9 +126,19 @@ body {
     transform: none;
   }
 }
+/* El recorte sólo existe mientras la línea sube; después se abre para no cortar
+   los trazos redondos (C, G, U) que bajan de la línea base. */
+@keyframes unclip {
+  from {
+    clip-path: inset(-0.2em 0 0 0);
+  }
+  to {
+    clip-path: inset(-0.2em 0 -0.25em 0);
+  }
+}
 .rise {
   display: block;
-  clip-path: inset(-0.2em 0 0 0);
+  animation: unclip 0.25s 1.15s both;
 }
 .rise > span {
   display: block;
@@ -136,6 +146,22 @@ body {
 }
 .rise:nth-child(2) > span {
   animation-delay: 90ms;
+}
+
+/* Cinta de cifras en loop infinito: dos copias del contenido, se desplaza media pista. */
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 48s linear infinite;
+}
+.marquee:hover .marquee-track,
+.marquee:focus-within .marquee-track {
+  animation-play-state: paused;
 }
 
 @keyframes enter {
@@ -152,26 +178,21 @@ body {
   animation: enter 0.9s var(--ease-out-expo) both;
 }
 
-@keyframes print {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-.strip-anim ellipse {
-  animation: print 0.5s var(--ease-out-expo) both;
-  animation-delay: calc(0.45s + var(--i) * 60ms);
-}
-
 @media (prefers-reduced-motion: reduce) {
   html:not(.lenis) {
     scroll-behavior: auto;
   }
+  .rise,
   .rise > span,
-  .enter,
-  .strip-anim ellipse {
+  .enter {
     animation: none;
+  }
+  .rise {
+    clip-path: none;
+  }
+  .marquee-track {
+    animation: none;
+    width: auto;
+    flex-wrap: wrap;
   }
 }

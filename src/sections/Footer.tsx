@@ -1,22 +1,20 @@
 import { FOOTER, LINKS } from '@/content'
 import { GrupoBlack, LogoTiles, TextLink } from '@/components/Brand'
-import { LineClaim, RadialPattern } from '@/components/Patterns'
+import { LineClaim } from '@/components/Patterns'
 
 export function Footer() {
   return (
-    <footer className="bg-ink text-paper">
+    <footer className="bg-ink text-paper border-t border-paper/15">
       <div className="mx-auto max-w-[1440px] px-5 md:px-10 lg:px-14 py-16">
         <LineClaim className="text-paper/80" />
 
         <div className="mt-14 grid gap-12 md:grid-cols-12 md:items-start">
-          {/* Patrón radial del manual (blanco sobre negro), como en la pág. Patrones. */}
           <div className="md:col-span-5">
-            <RadialPattern fill="#fff" className="w-full aspect-square max-w-[520px]" />
-            <LogoTiles className="mt-10" />
+            <LogoTiles />
             <p className="label mt-6 text-paper/60">Escobar · Buenos Aires · Argentina</p>
           </div>
 
-          <div className="md:col-span-7 grid sm:grid-cols-3 gap-8 md:pt-2">
+          <div className="md:col-span-7 grid sm:grid-cols-3 gap-8">
             <div>
               <p className="label text-paper/60 mb-3">Desarrolla</p>
               <GrupoBlack />
@@ -51,7 +49,7 @@ export function Footer() {
           </div>
         </div>
 
-        <p className="mt-16 text-xs leading-relaxed text-paper/55 max-w-5xl">{FOOTER.disclaimer}</p>
+        <p className="mt-16 text-xs leading-relaxed text-paper/55 max-w-4xl">{FOOTER.disclaimer}</p>
 
         <div className="mt-8 flex flex-wrap justify-between gap-4 label text-paper/50">
           <span>© 2026 BLACK Paseo de Compras · Grupo +Black</span>

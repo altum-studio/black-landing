@@ -27,7 +27,8 @@ npm run preview
 src/
 ├── content.ts            # TODO el copy y los datos (press kit, brochure, listado de unidades)
 ├── components/Brand.tsx  # Logo, LogoTiles, GrupoBlack, Button, TextLink, Section, Title
-├── components/Patterns.tsx # StripPattern, RadialPattern, PatternImage, Quarter, LineClaim (morfologías del manual)
+├── components/Patterns.tsx # ModuleStrip, PatternImage (ventanas circulares), LineClaim
+├── components/logos/     # LogoMark, LogoDisplay, LogoGrupo: SVG extraídos del manual de marca (no editar a mano)
 ├── sections/             # Nav · Hero+Stats · Proyecto+Mix+Sustentable · Ubicacion · Grupo · Inversion · Contacto · Footer
 ├── lib/lead.ts           # armado del mensaje de WhatsApp + POST opcional a un endpoint
 └── lib/tracking.ts       # GA4 + Meta Pixel (sólo si hay env vars)

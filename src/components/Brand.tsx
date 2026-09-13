@@ -1,48 +1,31 @@
-import type { ReactNode } from 'react'
+import type { CSSProperties, ReactNode } from 'react'
 
-/* ── Logo: "BLACK" en Six Caps sobre "PASEO DE COMPRAS" en Barlow (Manual 2026) ── */
-export function Logo({ className = '', size = 'sm' }: { className?: string; size?: 'sm' | 'md' | 'lg' }) {
-  const s = { sm: 'text-[38px]', md: 'text-[56px]', lg: 'text-[96px]' }[size]
-  const sub = { sm: 'text-[8px]', md: 'text-[10px]', lg: 'text-[15px]' }[size]
+import { LogoDisplay } from './logos/LogoDisplay'
+import { LogoGrupo } from './logos/LogoGrupo'
+import { LogoMark } from './logos/LogoMark'
+
+const bgVar = (bg: string) => ({ ['--logo-bg' as string]: bg }) as CSSProperties
+
+/* ── Logo apilado BLACK / PASEO DE COMPRAS (manual pág. 4), en el color del texto ── */
+export function Logo({ className = '' }: { className?: string }) {
+  return <LogoMark role="img" aria-label="BLACK Paseo de Compras" className={`block h-12 md:h-14 w-auto ${className}`} />
+}
+
+/* ── Versión display: BLACK + cuadros P A S E O / D E / C O M P R A S (manual pág. 5) ── */
+export function LogoTiles({ className = '', bg = '#000' }: { className?: string; bg?: string }) {
   return (
-    <span className={`inline-flex flex-col whitespace-nowrap ${className}`} aria-label="BLACK Paseo de Compras">
-      <span className={`display leading-none ${s}`}>Black</span>
-      <span className={`label ${sub} mt-[0.2em] tracking-[0.26em] leading-none`}>Paseo de compras</span>
-    </span>
+    <LogoDisplay
+      role="img"
+      aria-label="BLACK Paseo de Compras"
+      className={`block h-[52px] md:h-[72px] w-auto max-w-full ${className}`}
+      style={bgVar(bg)}
+    />
   )
 }
 
-/* ── Versión display: BLACK + cuadros de letras P A S E O / D E / C O M P R A S ── */
-export function LogoTiles({ className = '' }: { className?: string }) {
-  const row = (word: string) =>
-    word.split('').map((c, i) => (
-      <span key={i} className="tile bg-paper text-ink">
-        {c}
-      </span>
-    ))
-  return (
-    <span className={`inline-flex items-end gap-[0.3em] text-[56px] md:text-[84px] ${className}`} aria-hidden>
-      <span className="display leading-[0.78]">Black</span>
-      <span className="inline-flex flex-col gap-[3px] pb-[0.04em]">
-        <span className="inline-flex gap-[3px]">{row('PASEO')}</span>
-        <span className="inline-flex gap-[3px]">
-          {row('DE')}
-          <span className="tile opacity-0" />
-          {row('COMPRAS')}
-        </span>
-      </span>
-    </span>
-  )
-}
-
-/* ── Marca del desarrollador: GRUPO + caja "+BLACK" ── */
-export function GrupoBlack({ invert = false }: { invert?: boolean }) {
-  return (
-    <span className="inline-flex items-stretch gap-[0.12em] text-[44px]" aria-label="Grupo +Black">
-      <span className="display leading-none">Grupo</span>
-      <span className={`display leading-none px-[0.14em] ${invert ? 'bg-ink text-paper' : 'bg-paper text-ink'}`}>+Black</span>
-    </span>
-  )
+/* ── Marca del desarrollador GRUPO +BLACK (manual pág. 14) ── */
+export function GrupoBlack({ className = '', bg = '#000' }: { className?: string; bg?: string }) {
+  return <LogoGrupo role="img" aria-label="Grupo +Black" className={`block h-20 w-auto ${className}`} style={bgVar(bg)} />
 }
 
 /* ── Etiqueta de esquina, estilo manual: "BLACK PASEO DE COMPRAS · SECCIÓN · 2026" ── */

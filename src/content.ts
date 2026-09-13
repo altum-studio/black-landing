@@ -27,31 +27,20 @@ export const HERO = {
   ctaSecondary: 'Recorrer en 3D',
 }
 
-/**
- * Ficha tipográfica (cartel de obra): palabras a dos escalas y cuartos de círculo
- * como signos. `xl` cifra grande, `md` palabra, `sm` dos líneas chicas.
- */
-export type FichaToken = { text: string; size: 'xl' | 'md' | 'sm' } | { shape: 'tl' | 'tr' | 'bl' | 'br' }
-export const FICHA: FichaToken[] = [
-  { text: '125', size: 'xl' },
-  { text: 'Locales\ncomerciales', size: 'sm' },
-  { shape: 'tr' },
-  { text: 'Storage', size: 'md' },
-  { text: 'Cines', size: 'md' },
-  { shape: 'bl' },
-  { text: 'Gimnasio\nsupermercado', size: 'sm' },
-  { text: '450', size: 'xl' },
-  { text: 'Cocheras', size: 'md' },
-  { shape: 'br' },
-  { text: 'Cowork\nrooftop', size: 'sm' },
-  { text: '17.000', size: 'xl' },
-  { text: 'm²', size: 'md' },
-  { shape: 'tl' },
-  { text: 'Entrega\nmayo 2028', size: 'sm' },
+/** Cinta de cifras en loop (cifra grande + palabra). */
+export const STATS = [
+  { value: '17.000', unit: 'm²', label: 'cubiertos' },
+  { value: '125', unit: '', label: 'locales comerciales' },
+  { value: '450', unit: '', label: 'cocheras' },
+  { value: '05·2028', unit: '', label: 'entrega estimada' },
+  { value: '4', unit: '', label: 'salas de cine' },
+  { value: '+1.000', unit: 'm²', label: 'de gimnasio' },
+  { value: '+200', unit: '', label: 'unidades de storage' },
+  { value: '50 a 138', unit: 'm²', label: 'por local' },
 ]
 
 export const PROYECTO = {
-  title: ['Destino,', 'no un mall.'],
+  title: ['Un destino,', 'no un mall.'],
   body: [
     'Arquitectura industrial contemporánea: chapa trapezoidal negra, hormigón y vegetación en canteros que integran el edificio al verde de la zona.',
     'Naves independientes unidas por una plataforma común que genera espacios sociales, semicubiertos y pergolados. Foyer de doble altura, mix retail premium, gastronomía, cowork y rooftop.',
@@ -107,28 +96,6 @@ export const UBICACION = {
     { lugar: 'Puertos del Lago', km: '3 km' },
     { lugar: 'Golf Maschwitz Club', km: '4 km' },
   ],
-}
-
-export const GRUPO = {
-  title: ['No somos una', 'desarrolladora más.'],
-  body:
-    'Somos un ecosistema de cinco socios estratégicos que se potencian entre sí y cubren todo el ciclo de vida de un proyecto inmobiliario. Al integrar verticalmente cada eslabón, eliminamos sobrecostos de intermediarios y mitigamos los riesgos que frenan otras obras.',
-  claim: 'El inversor no compra metros cuadrados: se asocia a un sistema probado de eficiencia y respaldo profesional.',
-  socios: [
-    { n: '01', title: 'Arquitectura', body: 'Diseño vanguardista y optimización de espacios comerciales.' },
-    { n: '02', title: 'Construcción', body: 'Ejecución directa de obra. Plazos y calidad garantizados.' },
-    { n: '03', title: 'Insumos', body: 'Provisión propia de aberturas y materiales críticos.' },
-    { n: '04', title: 'Finanzas', body: 'Estructuración fiscal eficiente y transparencia en el manejo de fondos.' },
-    { n: '05', title: 'Seguros', body: '' },
-  ],
-  kpis: [
-    { value: '0', label: 'intermediarios en la cadena' },
-    { value: '05', label: 'socios estratégicos integrados' },
-    { value: '100%', label: 'control sobre obra y plazos' },
-  ],
-  diferencialTitle: 'Somos constructores, no sólo desarrolladores.',
-  diferencial:
-    'A diferencia de otras desarrolladoras, Grupo +Black opera bajo un modelo de integración vertical total. Al ser nosotros mismos los proveedores, constructores y gestores del proyecto, eliminamos intermediarios y optimizamos cada peso invertido.',
 }
 
 export const SUSTENTABLE = {
@@ -190,5 +157,5 @@ export const FOOTER = {
   comercializa: 'Coldwell Banker',
   telefono: '11 3002-7781',
   disclaimer:
-    'Las imágenes, renders, animaciones, recorridos virtuales y demás contenidos visuales presentados son representaciones artísticas de carácter ilustrativo. Los acabados, materialidades, vegetación, mobiliario, equipamiento y elementos decorativos mostrados no forman parte del precio de venta ni constituyen obligación contractual del desarrollador, salvo que se especifiquen expresamente en el boleto de reserva o contrato de compraventa. Las superficies indicadas son aproximadas y podrán presentar variaciones menores conforme a la medición final certificada. Los precios expresados en dólares estadounidenses (USD) corresponden a la fecha de publicación y están sujetos a modificación sin previo aviso hasta tanto se suscriba el correspondiente instrumento contractual. Las cocheras se comercializan de forma independiente. La fecha de entrega estimada podrá estar sujeta a variaciones por causas ajenas al control del desarrollador. La disponibilidad de unidades se actualiza en tiempo real y puede cambiar sin notificación previa.',
+    'Las imágenes y renders son representaciones artísticas de carácter ilustrativo; acabados, equipamiento y vegetación no forman parte del precio ni constituyen obligación contractual salvo que se especifiquen en el boleto o contrato. Superficies aproximadas. Precios en USD sujetos a modificación sin previo aviso hasta la firma del instrumento contractual. Cocheras se comercializan por separado. La fecha de entrega estimada y la disponibilidad pueden variar por causas ajenas al desarrollador.',
 }

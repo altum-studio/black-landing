@@ -14,7 +14,6 @@ const SECTION_TO_ITEM: Record<string, string> = {
   proyecto: 'proyecto',
   mix: 'proyecto',
   ubicacion: 'ubicacion',
-  grupo: '',
   sustentable: '',
   inversion: 'inversion',
   contacto: '',
@@ -51,9 +50,9 @@ export function Nav() {
         scrolled ? 'bg-ink/90 backdrop-blur-md border-b border-paper/10' : 'bg-gradient-to-b from-ink/60 to-transparent'
       }`}
     >
-      <div className="mx-auto max-w-[1440px] px-5 md:px-10 lg:px-14 h-20 flex items-center justify-between gap-6">
+      <div className="mx-auto max-w-[1440px] px-5 md:px-10 lg:px-14 h-20 md:h-24 flex items-center justify-between gap-6">
         <a href="#top" aria-label="BLACK Paseo de Compras · inicio" className="shrink-0">
-          <Logo size="sm" />
+          <Logo />
         </a>
         <div className="flex items-center gap-6 md:gap-8 label whitespace-nowrap">
           {ITEMS.map((it) => (

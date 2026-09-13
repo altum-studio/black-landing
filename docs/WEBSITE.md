@@ -1,7 +1,7 @@
 # Website
 
 ## Sitemap
-- `/` landing única. Anclas: #proyecto · #mix · #ubicacion · #grupo · #sustentable · #inversion · #contacto.
+- `/` landing única. Anclas: #proyecto · #mix · #ubicacion · #sustentable · #inversion · #contacto.
 - Externo: showroom 3D (black.virtual2sold.com), abre en pestaña nueva.
 
 ## Page Briefs
@@ -14,7 +14,7 @@
 ## Conversion Elements
 | Objection (Big 5) | Counter | Placement | Status |
 |---|---|---|---|
-| Trust: "¿quién está detrás?" | Grupo +Black: 5 socios integrados, 0 intermediarios, 100% control de obra; comercializa Coldwell Banker | #grupo, #contacto, footer | live |
+| Trust: "¿quién está detrás?" | Desarrolla Grupo +Black, comercializa Coldwell Banker (footer y contacto). El módulo de los cinco socios se quitó a pedido del cliente | #contacto, footer | live |
 | Trust: "¿es real / avanza?" | Renders finales + showroom 3D; falta prueba de avance de obra | hero, #proyecto | falta: fotos/reels de obra |
 | Price: "¿cuánto?" | Lista de precios por WhatsApp; tipologías con m² | #inversion, form | pendiente decisión cliente |
 | Fit: "¿me sirve a mí?" | Objetivos (renta, uso propio, revalorización, diversificar) + tipologías + niveles | #inversion, form | live |
@@ -39,6 +39,9 @@
 | Copy de Seguros sobreprometía ("cobertura integral… seguridad jurídica") | 2 | Se quita; los cinco socios "se potencian entre sí" | done |
 | Sin prueba social ni avance de obra | 3 | Pedir al cliente marcas confirmadas y material de obra | pendiente |
 | Precios ausentes | 2 | Decisión del cliente | pendiente |
+| Logos armados con tipografía en vez de los del manual | 2 | Vectores extraídos del PDF del manual (marca apilada, display con cuadros, GRUPO +BLACK) | done |
+| Recursos del manual aplicados literalmente no gustaron al cliente | 1 | Se vuelve a las ventanas circulares; sin gráfica en el hero; patrón radial fuera del footer | done |
+| Aviso legal demasiado largo | 1 | Resumido a lo esencial | done |
 
 ## Lead Capture
 Form de 5 campos que replica el "Black form" de Meta. Al enviar abre WhatsApp con el mensaje prearmado (unidad, objetivo, capital), POST opcional a `VITE_LEAD_ENDPOINT`, eventos `generate_lead` (GA4) y `Lead` (Meta). Sin scorecard: el capital y el objetivo ya califican el lead para Coldwell.
