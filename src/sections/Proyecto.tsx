@@ -1,17 +1,13 @@
+import { useState } from 'react'
 import { MIX, PROYECTO, SUSTENTABLE } from '@/content'
-import { Pattern, PatternImage, Section, Title } from '@/components/Brand'
-
-const MIX_IMG = ['/img/int_4.jpg', '/img/int_1.jpg', '/img/patio_comidas.jpg', '/img/cowork.jpg', '/img/storage_ph.jpg']
+import { PatternImage, Section, Title } from '@/components/Brand'
 
 export function Proyecto() {
   return (
     <Section id="proyecto" meta="El proyecto">
       <div className="mt-10 grid gap-10 lg:grid-cols-12">
-        <div className="lg:col-span-7">
-          <p className="label opacity-70 mb-4">{PROYECTO.eyebrow}</p>
-          <Title lines={PROYECTO.title} />
-        </div>
-        <div className="lg:col-span-5 lg:pt-16 space-y-5 text-lg font-light leading-relaxed text-paper/85 max-w-md">
+        <Title lines={PROYECTO.title} className="lg:col-span-7" />
+        <div className="lg:col-span-5 lg:pt-6 space-y-5 text-lg leading-relaxed text-paper/85 max-w-md">
           {PROYECTO.body.map((p) => (
             <p key={p}>{p}</p>
           ))}
@@ -20,24 +16,23 @@ export function Proyecto() {
 
       <div className="mt-14 grid gap-4 md:grid-cols-12">
         <PatternImage
-          src="/img/ext_3.jpg"
+          src="/img/ext_3.webp"
           alt="Patio central con escaleras y locales en doble altura"
-          cols={6}
-          rows={4}
-          seed={5}
+          edge="right"
+          width="25%"
           className="md:col-span-8"
         />
         <div className="md:col-span-4 grid gap-4 grid-cols-2 md:grid-cols-1">
           <img
-            src="/img/int_4.jpg"
-            alt="Circulación interior con locales comerciales"
+            src="/img/int_6.webp"
+            alt="Espacio gastronómico con barra"
             className="w-full aspect-[3/2] object-cover"
             loading="lazy"
             decoding="async"
           />
           <img
-            src="/img/int_6.jpg"
-            alt="Espacio gastronómico con barra"
+            src="/img/int_5.webp"
+            alt="Lounge del rooftop al atardecer"
             className="w-full aspect-[3/2] object-cover"
             loading="lazy"
             decoding="async"
@@ -48,64 +43,88 @@ export function Proyecto() {
   )
 }
 
+/* Índice de programas: la lista es el control, la imagen responde. */
 export function Mix() {
+  const [i, setI] = useState(0)
   return (
-    <Section meta="Mix comercial" tone="light">
-      <div className="mt-10 flex items-end justify-between gap-6 flex-wrap">
-        <Title lines={['Un destino', 'multi-uso.']} />
-        <p className="label opacity-70 pb-3">Rubros y distribución</p>
-      </div>
+    <Section id="mix" meta="Mix comercial" tone="light">
+      <Title lines={['Un destino', 'multi-uso.']} className="mt-10" />
 
-      <ul className="mt-12 grid gap-px bg-ink/15 border border-ink/15 md:grid-cols-2 lg:grid-cols-3">
-        {MIX.map((m, i) => (
-          <li key={m.n} className="bg-paper p-5 md:p-7 flex flex-col gap-6">
-            <img
-              src={MIX_IMG[i]}
-              alt=""
-              className="w-full aspect-[3/2] object-cover"
-              loading="lazy"
-              decoding="async"
-            />
-            <div className="flex gap-5 items-start">
-              <span className="display text-6xl leading-[0.8] shrink-0">{m.n}</span>
-              <div>
-                <h3 className="text-lg font-semibold uppercase tracking-[0.08em]">{m.title}</h3>
-                <p className="mt-2 font-light text-ink/80 leading-relaxed">{m.body}</p>
-              </div>
-            </div>
-          </li>
-        ))}
-        <li className="bg-ink p-8 flex items-center justify-center min-h-[280px]">
-          <Pattern cols={4} rows={4} seed={2} fill="bg-paper" className="w-full max-w-[260px]" />
-        </li>
-      </ul>
+      <div className="mt-12 grid gap-10 lg:grid-cols-12 lg:items-start">
+        <ol className="lg:col-span-5 border-t border-ink/15">
+          {MIX.map((m, k) => {
+            const active = i === k
+            return (
+              <li key={m.title} className="border-b border-ink/15">
+                <button
+                  type="button"
+                  onMouseEnter={() => setI(k)}
+                  onFocus={() => setI(k)}
+                  onClick={() => setI(k)}
+                  aria-expanded={active}
+                  className={`w-full text-left py-4 flex items-baseline justify-between gap-6 transition-colors duration-200 ${
+                    active ? 'text-ink' : 'text-ink/45 hover:text-ink'
+                  }`}
+                >
+                  <span className="display text-5xl leading-none">{m.title}</span>
+                  <span className="label whitespace-nowrap shrink-0 text-ink/60">{m.tag}</span>
+                </button>
+                <div className={active ? 'block' : 'hidden'}>
+                  <p className="font-light text-ink/80 leading-relaxed pb-5 pr-6 max-w-md">{m.body}</p>
+                  <img
+                    src={m.img}
+                    alt={m.alt}
+                    className="lg:hidden w-full aspect-[3/2] object-cover mb-5"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              </li>
+            )
+          })}
+        </ol>
+
+        <div className="hidden lg:block lg:col-span-7 lg:sticky lg:top-28">
+          <div className="relative aspect-[3/2] bg-ink/5 overflow-hidden">
+            {MIX.map((m, k) => (
+              <img
+                key={m.title}
+                src={m.img}
+                alt={m.alt}
+                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+                  i === k ? 'opacity-100' : 'opacity-0'
+                }`}
+                loading="lazy"
+                decoding="async"
+              />
+            ))}
+          </div>
+          <p className="label mt-3 text-ink/60">{MIX[i].alt}</p>
+        </div>
+      </div>
     </Section>
   )
 }
 
 export function Sustentable() {
   return (
-    <Section meta="Rooftop y sostenibilidad">
+    <Section id="sustentable" meta="Rooftop y sostenibilidad">
       <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:items-end">
-        <div className="lg:col-span-6">
-          <p className="label opacity-70 mb-4">{SUSTENTABLE.eyebrow}</p>
-          <Title lines={SUSTENTABLE.title} />
-        </div>
         <PatternImage
-          src="/img/ext_1.jpg"
+          src="/img/ext_1.webp"
           alt="Terraza verde del rooftop"
-          cols={6}
-          rows={4}
-          seed={7}
-          className="lg:col-span-6"
+          edge="left"
+          width="25%"
+          className="lg:col-span-7 lg:order-first"
         />
+        <Title lines={SUSTENTABLE.title} className="lg:col-span-5" />
       </div>
 
-      <ul className="mt-12 grid md:grid-cols-2 lg:grid-cols-4 border-t border-paper/15">
+      <ul className="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-x-8 border-t border-paper/15">
         {SUSTENTABLE.items.map((it) => (
-          <li key={it.title} className="py-8 md:pr-8 border-b border-paper/15 lg:border-b-0">
+          <li key={it.title} className="py-8 border-b border-paper/15 lg:border-b-0">
             <h3 className="display text-5xl">{it.title}</h3>
-            <p className="mt-3 font-light text-paper/75 leading-relaxed max-w-xs">{it.body}</p>
+            <p className="mt-3 text-paper/75 leading-relaxed max-w-xs">{it.body}</p>
           </li>
         ))}
       </ul>

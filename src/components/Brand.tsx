@@ -1,30 +1,29 @@
-import { useEffect, useRef, type ReactNode } from 'react'
+import type { CSSProperties, ReactNode } from 'react'
 
-/* ── Logo: "BLACK" en Six Caps + "PASEO DE COMPRAS" en Barlow (Manual 2026) ── */
-export function Logo({ className = '', size = 'md' }: { className?: string; size?: 'sm' | 'md' | 'lg' }) {
-  const s = { sm: 'text-[40px]', md: 'text-[56px]', lg: 'text-[96px]' }[size]
+/* ── Logo: "BLACK" en Six Caps sobre "PASEO DE COMPRAS" en Barlow (Manual 2026) ── */
+export function Logo({ className = '', size = 'sm' }: { className?: string; size?: 'sm' | 'md' | 'lg' }) {
+  const s = { sm: 'text-[38px]', md: 'text-[56px]', lg: 'text-[96px]' }[size]
   const sub = { sm: 'text-[8px]', md: 'text-[10px]', lg: 'text-[15px]' }[size]
   return (
-    <span className={`inline-flex flex-col leading-none ${className}`} aria-label="BLACK Paseo de Compras">
-      <span className={`display ${s}`}>Black</span>
-      <span className={`label ${sub} -mt-[0.35em] tracking-[0.22em]`}>Paseo de compras</span>
+    <span className={`inline-flex flex-col whitespace-nowrap ${className}`} aria-label="BLACK Paseo de Compras">
+      <span className={`display leading-none ${s}`}>Black</span>
+      <span className={`label ${sub} mt-[0.2em] tracking-[0.26em] leading-none`}>Paseo de compras</span>
     </span>
   )
 }
 
 /* ── Versión display: BLACK + cuadros de letras P A S E O / D E / C O M P R A S ── */
-export function LogoTiles({ invert = false }: { invert?: boolean }) {
-  const t = invert ? 'bg-ink text-paper' : 'bg-paper text-ink'
+export function LogoTiles({ className = '' }: { className?: string }) {
   const row = (word: string) =>
     word.split('').map((c, i) => (
-      <span key={i} className={`tile ${t}`}>
+      <span key={i} className="tile bg-paper text-ink">
         {c}
       </span>
     ))
   return (
-    <span className="inline-flex items-end gap-2" aria-hidden>
-      <span className="display text-[84px] leading-[0.75]">Black</span>
-      <span className="inline-flex flex-col gap-[3px]">
+    <span className={`inline-flex items-end gap-[0.3em] text-[56px] md:text-[84px] ${className}`} aria-hidden>
+      <span className="display leading-[0.78]">Black</span>
+      <span className="inline-flex flex-col gap-[3px] pb-[0.04em]">
         <span className="inline-flex gap-[3px]">{row('PASEO')}</span>
         <span className="inline-flex gap-[3px]">
           {row('DE')}
@@ -39,9 +38,9 @@ export function LogoTiles({ invert = false }: { invert?: boolean }) {
 /* ── Marca del desarrollador: GRUPO + caja "+BLACK" ── */
 export function GrupoBlack({ invert = false }: { invert?: boolean }) {
   return (
-    <span className="inline-flex items-stretch gap-2" aria-label="Grupo +Black">
-      <span className="display text-[44px]">Grupo</span>
-      <span className={`display text-[44px] px-2 ${invert ? 'bg-ink text-paper' : 'bg-paper text-ink'}`}>+Black</span>
+    <span className="inline-flex items-stretch gap-[0.12em] text-[44px]" aria-label="Grupo +Black">
+      <span className="display leading-none">Grupo</span>
+      <span className={`display leading-none px-[0.14em] ${invert ? 'bg-ink text-paper' : 'bg-paper text-ink'}`}>+Black</span>
     </span>
   )
 }
@@ -58,93 +57,94 @@ export function Meta({ left, right }: { left: string; right?: string }) {
   )
 }
 
-/* ── Morfologías del manual: 1 semicírculo · 2 círculo · 3 cuadrado · 4 cuarto ── */
-type Shape = 'half' | 'circle' | 'square' | 'quarter' | 'empty'
+/* ────────────────────────────────────────────────────────────────────────────
+   Morfologías del manual (semicírculo · círculo · cuadrado · cuarto), compuestas
+   en bloques de 2×2 como en las páginas de patrones e intervención de imágenes.
+   ──────────────────────────────────────────────────────────────────────────── */
 
-function ShapeCell({ shape, fill, rotate = 0 }: { shape: Shape; fill: string; rotate?: number }) {
-  if (shape === 'empty') return <div />
-  const r =
-    shape === 'circle'
-      ? 'rounded-full'
-      : shape === 'half'
-        ? 'rounded-t-full'
-        : shape === 'quarter'
-          ? 'rounded-tl-full'
-          : ''
-  return <div className={`${fill} ${r} w-full h-full`} style={{ transform: `rotate(${rotate}deg)` }} />
+type Win = { r: string; cx: string; cy: string } | null
+
+/* Bloque A: un círculo grande formado por cuatro cuartos. */
+const CIRCLE_BLOCK: Win[] = [
+  { r: '50cqw', cx: '100%', cy: '100%' },
+  { r: '50cqw', cx: '0%', cy: '100%' },
+  { r: '50cqw', cx: '100%', cy: '0%' },
+  { r: '50cqw', cx: '0%', cy: '0%' },
+]
+/* Bloque B: dos círculos chicos, cada uno partido en dos semicírculos. */
+const LENS_BLOCK: Win[] = [
+  { r: '25cqw', cx: '50%', cy: '100%' },
+  { r: '25cqw', cx: '50%', cy: '100%' },
+  { r: '25cqw', cx: '50%', cy: '0%' },
+  { r: '25cqw', cx: '50%', cy: '0%' },
+]
+
+function winStyle(w: Win): CSSProperties | undefined {
+  if (!w) return undefined
+  const g = `radial-gradient(circle ${w.r} at ${w.cx} ${w.cy}, transparent 99%, #000 100%)`
+  return { WebkitMaskImage: g, maskImage: g }
 }
 
 /**
- * Patrón geométrico (grilla de módulos). Determinista a partir de `seed`, para que
- * cada instancia quede igual entre renders y se pueda ajustar a mano.
+ * Tira vertical de módulos sobre un borde de la imagen. Las celdas son del color
+ * de la sección y la imagen se ve a través de ventanas circulares.
  */
-export function Pattern({
-  cols = 6,
-  rows = 4,
-  seed = 1,
-  fill = 'bg-paper',
+export function ModuleStrip({
+  edge = 'right',
+  width = '25%',
+  fill = 'bg-ink',
+  blocks = 12,
+  animate = false,
   className = '',
 }: {
-  cols?: number
-  rows?: number
-  seed?: number
+  edge?: 'right' | 'left'
+  width?: string
   fill?: string
+  blocks?: number
+  animate?: boolean
   className?: string
 }) {
-  const shapes: Shape[] = ['quarter', 'half', 'circle', 'quarter', 'square', 'empty', 'quarter', 'half']
-  const cells: { shape: Shape; rotate: number }[] = []
-  let x = seed * 9301 + 49297
-  for (let i = 0; i < cols * rows; i++) {
-    x = (x * 233280 + 1) % 4294967296
-    const shape = shapes[x % shapes.length]
-    const rotate = 90 * (Math.floor(x / 7) % 4)
-    cells.push({ shape, rotate })
-  }
+  const cells: Win[] = []
+  for (let b = 0; b < blocks; b++) cells.push(...(b % 2 === 0 ? CIRCLE_BLOCK : LENS_BLOCK))
   return (
     <div
-      className={`grid gap-0 ${className}`}
-      style={{ gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`, aspectRatio: `${cols} / ${rows}` }}
       aria-hidden
+      className={`strip absolute inset-y-0 overflow-hidden ${edge === 'right' ? 'right-0' : 'left-0'} ${
+        animate ? 'strip-anim' : ''
+      } ${className}`}
+      style={{ width }}
     >
-      {cells.map((c, i) => (
-        <ShapeCell key={i} shape={c.shape} fill={fill} rotate={c.rotate} />
-      ))}
+      <div className="strip-grid">
+        {cells.map((w, i) => (
+          <div key={i} className={fill} style={{ ...winStyle(w), ['--i' as string]: i } as CSSProperties} />
+        ))}
+      </div>
     </div>
   )
 }
 
-/**
- * "Intervención de imágenes" del manual: el render se ve a través de una grilla de
- * módulos; algunas celdas quedan tapadas por el color de fondo con formas.
- */
+/** Imagen con la tira de módulos del manual sobre uno de sus bordes. */
 export function PatternImage({
   src,
   alt,
-  cols = 6,
-  rows = 4,
-  seed = 3,
+  edge = 'right',
+  width = '25%',
   bg = 'bg-ink',
+  aspect = '16 / 9',
   className = '',
   priority = false,
 }: {
   src: string
   alt: string
-  cols?: number
-  rows?: number
-  seed?: number
+  edge?: 'right' | 'left'
+  width?: string
   bg?: string
+  aspect?: string
   className?: string
   priority?: boolean
 }) {
-  const cells: (Shape | null)[] = []
-  let x = seed * 7919 + 104729
-  for (let i = 0; i < cols * rows; i++) {
-    x = (x * 1103515245 + 12345) % 2147483648
-    const v = x % 10
-    cells.push(v < 5 ? null : v < 7 ? 'quarter' : v < 8 ? 'half' : v < 9 ? 'circle' : 'square')
-  }
   return (
-    <div className={`relative overflow-hidden ${className}`} style={{ aspectRatio: `${cols} / ${rows}` }}>
+    <div className={`relative overflow-hidden ${className}`} style={{ aspectRatio: aspect }}>
       <img
         src={src}
         alt={alt}
@@ -153,35 +153,44 @@ export function PatternImage({
         decoding="async"
         fetchPriority={priority ? 'high' : 'auto'}
       />
-      <div
-        className="absolute inset-0 grid"
-        style={{ gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))` }}
-        aria-hidden
-      >
-        {cells.map((s, i) => (
-          <div key={i} className="relative">
-            {s && (
-              <div className={`absolute inset-0 ${bg}`}>
-                {/* Recorte interior: forma transparente que deja ver el render */}
-                <div
-                  className={`w-full h-full ${
-                    s === 'circle' ? 'rounded-full' : s === 'half' ? 'rounded-b-full' : s === 'quarter' ? 'rounded-br-full' : ''
-                  }`}
-                  style={{
-                    backgroundImage: `url(${src})`,
-                    backgroundSize: `${cols * 100}% ${rows * 100}%`,
-                    backgroundPosition: `${((i % cols) / (cols - 1)) * 100}% ${(Math.floor(i / cols) / (rows - 1)) * 100}%`,
-                    opacity: s === 'square' ? 0 : 1,
-                  }}
-                />
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
+      <ModuleStrip edge={edge} width={width} fill={bg} />
     </div>
   )
 }
+
+/* Patrón plano (página "Patrones" del manual), 12 columnas × 2 filas, compuesto a mano. */
+const BAND: string[] = [
+  'tl tr hb hb tl tr c  .  tl tr hb .',
+  'bl br ht ht bl br .  c  bl br ht s',
+]
+const SHAPE: Record<string, string> = {
+  tl: 'rounded-tl-full',
+  tr: 'rounded-tr-full',
+  bl: 'rounded-bl-full',
+  br: 'rounded-br-full',
+  ht: 'rounded-t-full',
+  hb: 'rounded-b-full',
+  c: 'rounded-full',
+  s: '',
+}
+
+export function PatternBand({ fill = 'bg-paper', className = '' }: { fill?: string; className?: string }) {
+  const cells = BAND.flatMap((r) => r.trim().split(/\s+/))
+  return (
+    <div className={`grid grid-cols-12 ${className}`} style={{ aspectRatio: '12 / 2' }} aria-hidden>
+      {cells.map((k, i) => (
+        <div key={i} className={k === '.' ? '' : `${fill} ${SHAPE[k]}`} />
+      ))}
+    </div>
+  )
+}
+
+/* ── Ícono de flecha, un solo trazo, para todos los enlaces y botones ── */
+export const Arrow = ({ className = '' }: { className?: string }) => (
+  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden className={`shrink-0 ${className}`}>
+    <path d="M2 12 12 2M4 2h8v8" stroke="currentColor" strokeWidth="1.5" />
+  </svg>
+)
 
 /* ── Botones ── */
 export function Button({
@@ -196,7 +205,7 @@ export function Button({
   children: ReactNode
   href?: string
   onClick?: () => void
-  variant?: 'solid' | 'outline' | 'ghost' | 'dark' | 'outlineDark'
+  variant?: 'solid' | 'outline' | 'dark' | 'outlineDark'
   type?: 'button' | 'submit'
   className?: string
   target?: string
@@ -206,7 +215,6 @@ export function Button({
   const v = {
     solid: 'bg-paper text-ink hover:bg-paper/85',
     outline: 'border border-paper text-paper hover:bg-paper hover:text-ink',
-    ghost: 'text-paper underline underline-offset-8 decoration-paper/40 hover:decoration-paper px-0',
     dark: 'bg-ink text-paper hover:bg-ink/85',
     outlineDark: 'border border-ink text-ink hover:bg-ink hover:text-paper',
   }[variant]
@@ -223,13 +231,35 @@ export function Button({
   )
 }
 
-export const Arrow = () => (
-  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden>
-    <path d="M2 12 12 2M4 2h8v8" stroke="currentColor" strokeWidth="1.5" />
-  </svg>
-)
+/* ── Enlace de texto con flecha ── */
+export function TextLink({
+  href,
+  children,
+  external = false,
+  className = '',
+  onClick,
+}: {
+  href: string
+  children: ReactNode
+  external?: boolean
+  className?: string
+  onClick?: () => void
+}) {
+  return (
+    <a
+      href={href}
+      onClick={onClick}
+      target={external ? '_blank' : undefined}
+      rel={external ? 'noopener' : undefined}
+      className={`inline-flex items-center gap-2 underline-offset-[6px] decoration-1 hover:underline ${className}`}
+    >
+      {children}
+      <Arrow />
+    </a>
+  )
+}
 
-/* ── Sección con etiqueta de esquina y reveal al scroll ── */
+/* ── Sección con etiqueta de esquina ── */
 export function Section({
   id,
   meta,
@@ -248,37 +278,16 @@ export function Section({
     <section id={id} className={`${t} ${className}`}>
       <div className="mx-auto max-w-[1440px] px-5 md:px-10 lg:px-14 py-16 md:py-24">
         <Meta left={meta} />
-        <Reveal>{children}</Reveal>
+        {children}
       </div>
     </section>
   )
 }
 
-export function Reveal({ children, className = '' }: { children: ReactNode; className?: string }) {
-  const ref = useRef<HTMLDivElement>(null)
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const e of entries) if (e.isIntersecting) el.classList.add('is-in')
-      },
-      { rootMargin: '0px 0px 15% 0px', threshold: 0 },
-    )
-    io.observe(el)
-    return () => io.disconnect()
-  }, [])
+/* ── Titular display de una o más líneas ── */
+export function Title({ lines, className = '', size }: { lines: string[]; className?: string; size?: string }) {
   return (
-    <div ref={ref} className={`reveal ${className}`}>
-      {children}
-    </div>
-  )
-}
-
-/* ── Titular display de dos líneas ── */
-export function Title({ lines, className = '' }: { lines: string[]; className?: string }) {
-  return (
-    <h2 className={`display text-[clamp(72px,12vw,180px)] ${className}`}>
+    <h2 className={`display ${size ?? 'text-[clamp(64px,9.5vw,152px)]'} ${className}`}>
       {lines.map((l, i) => (
         <span key={i} className="block">
           {l}

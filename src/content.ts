@@ -19,23 +19,22 @@ export const WHATSAPP_NUMBER =
 export const LEAD_ENDPOINT = (import.meta.env.VITE_LEAD_ENDPOINT as string | undefined) || ''
 
 export const HERO = {
-  eyebrow: 'Escobar · Corredor Puertos del Lago · Venta en pozo',
+  kicker: 'Locales comerciales en pozo · Escobar · Corredor Puertos del Lago',
   title: ['Tu lugar', 'de encuentro'],
   lead:
-    'Un nuevo hito comercial en Escobar. 17.000 m², 125 locales y 450 cocheras concebidos como destino de alta gama, no como un mall.',
+    'Invertí en el nuevo hito comercial de Escobar: 17.000 m², 125 locales y 450 cocheras concebidos como destino de alta gama, no como un mall. Entrega estimada: mayo 2028.',
   ctaPrimary: 'Quiero invertir',
   ctaSecondary: 'Recorrer en 3D',
 }
 
 export const STATS = [
-  { value: '17.000', unit: 'm²', label: 'superficie cubierta' },
-  { value: '125', unit: '', label: 'locales comerciales' },
-  { value: '450', unit: '', label: 'cocheras · 230 bajo nivel' },
-  { value: '05·2028', unit: '', label: 'entrega estimada' },
+  { value: '17.000', unit: 'm²', label: 'cubiertos' },
+  { value: '125', unit: '', label: 'locales' },
+  { value: '450', unit: '', label: 'cocheras' },
+  { value: '05·2028', unit: '', label: 'entrega' },
 ]
 
 export const PROYECTO = {
-  eyebrow: 'El proyecto',
   title: ['Destino,', 'no un mall.'],
   body: [
     'Arquitectura industrial contemporánea: chapa trapezoidal negra, hormigón y vegetación en canteros que integran el edificio al verde de la zona.',
@@ -45,34 +44,43 @@ export const PROYECTO = {
 
 export const MIX = [
   {
-    n: '01',
     title: 'Retail premium',
-    body: '125 locales modulables entre 50 m² y 138 m², distribuidos en módulos de 8.',
+    tag: '125 locales · 50 a 138 m²',
+    body: 'Locales modulables entre 50 m² y 138 m², distribuidos en módulos de 8 por nave.',
+    img: '/img/int_4.webp',
+    alt: 'Circulación interior con locales comerciales',
   },
   {
-    n: '02',
     title: 'Cines',
-    body: '4 salas con foyer en doble altura conectado al patio de comidas del nivel 3.',
+    tag: '4 salas',
+    body: 'Cuatro salas con foyer en doble altura conectado al patio de comidas del nivel 3.',
+    img: '/img/int_1.webp',
+    alt: 'Foyer en doble altura con escalera y gastronomía',
   },
   {
-    n: '03',
     title: 'Gym y market',
+    tag: '+1.000 m²',
     body: 'Gimnasio de última generación de más de 1.000 m² y market en planta baja.',
+    img: '/img/patio_comidas.webp',
+    alt: 'Patio de comidas con locales gastronómicos',
   },
   {
-    n: '04',
-    title: 'Cowork, gastro y rooftop',
+    title: 'Cowork y rooftop',
+    tag: 'Dos niveles',
     body: 'Espacios de trabajo colaborativo en dos niveles, patio gastronómico y rooftop con acceso directo desde el estacionamiento.',
+    img: '/img/cowork.webp',
+    alt: 'Cowork con mesas de trabajo y vegetación',
   },
   {
-    n: '05',
     title: 'Storage',
+    tag: '+200 unidades',
     body: 'Más de 200 unidades de guardado en el segundo subsuelo, con distintas medidas y volúmenes.',
+    img: '/img/storage_ph.webp',
+    alt: 'Pasillo de storage en subsuelo',
   },
 ]
 
 export const UBICACION = {
-  eyebrow: 'Ubicación estratégica',
   title: ['Llenamos', 'un vacío premium.'],
   body:
     'Sobre calle Santa Teresa, en el acceso al Barrio San Matías, a 50 m del Camino de los Lagos. Una zona que creció en densidad pero no en oferta comercial.',
@@ -86,14 +94,10 @@ export const UBICACION = {
 }
 
 export const GRUPO = {
-  eyebrow: 'Grupo +Black',
-  title: ['No somos', 'una desarrolladora más.'],
+  title: ['No somos una', 'desarrolladora más.'],
   body:
     'Somos un ecosistema de cinco socios estratégicos que cubren todo el ciclo de vida de un proyecto inmobiliario. Al integrar verticalmente cada eslabón, eliminamos sobrecostos de intermediarios y mitigamos los riesgos que frenan otras obras.',
   claim: 'El inversor no compra metros cuadrados: se asocia a un sistema probado de eficiencia y respaldo profesional.',
-  diferencialTitle: 'Somos constructores, no sólo desarrolladores.',
-  diferencial:
-    'A diferencia de otras desarrolladoras, Grupo +Black opera bajo un modelo de integración vertical total. Al ser nosotros mismos los proveedores, constructores y gestores del proyecto, eliminamos intermediarios y optimizamos cada peso invertido.',
   socios: [
     { n: '01', title: 'Arquitectura', body: 'Diseño vanguardista y optimización de espacios comerciales.' },
     { n: '02', title: 'Construcción', body: 'Ejecución directa de obra. Plazos y calidad garantizados.' },
@@ -106,10 +110,12 @@ export const GRUPO = {
     { value: '05', label: 'socios estratégicos integrados' },
     { value: '100%', label: 'control sobre obra y plazos' },
   ],
+  diferencialTitle: 'Somos constructores, no sólo desarrolladores.',
+  diferencial:
+    'A diferencia de otras desarrolladoras, Grupo +Black opera bajo un modelo de integración vertical total. Al ser nosotros mismos los proveedores, constructores y gestores del proyecto, eliminamos intermediarios y optimizamos cada peso invertido.',
 }
 
 export const SUSTENTABLE = {
-  eyebrow: 'Rooftop y sostenibilidad',
   title: ['Un paseo', 'inteligente.'],
   items: [
     { title: '+60% construcción en seco', body: 'Menor huella de carbono y plazos de obra más cortos.' },
@@ -120,15 +126,14 @@ export const SUSTENTABLE = {
 }
 
 export const INVERSION = {
-  eyebrow: 'Oportunidad',
-  title: ['Locales de 50', 'a 138 m². Venta en pozo.'],
+  title: ['Locales de 50 a 138 m².', 'Venta en pozo.'],
   body:
     'Unidades combinables en naves independientes, con posiciones de borde y medio en cada nivel. Consultá la lista de precios vigente y la disponibilidad en tiempo real.',
   tipologias: [
-    { title: 'Local medio', spec: '49,7 m²', body: 'Planta baja y niveles superiores. Ideal para retail y servicios.' },
-    { title: 'Local borde', spec: '51,5 m²', body: 'Doble frente y mayor exposición sobre circulaciones.' },
-    { title: 'Módulos combinables', spec: 'hasta 138 m²', body: 'Locales unificables para gastronomía, anclas y marcas.' },
-    { title: 'Storage', spec: '+200 unidades', body: 'Guardado privado en subsuelo, distintas medidas.' },
+    { title: 'Local medio', spec: '49,7 m²', body: 'Planta baja y niveles superiores. Ideal para retail y servicios.', img: '/img/nave_4_medio.webp' },
+    { title: 'Local borde', spec: '51,5 m²', body: 'Doble frente y mayor exposición sobre circulaciones.', img: '/img/nave_4_esquina.webp' },
+    { title: 'Combinables', spec: 'hasta 138 m²', body: 'Locales unificables para gastronomía, anclas y marcas.', img: '/img/nave_5_grande_a.webp' },
+    { title: 'Storage', spec: '+200 unidades', body: 'Guardado privado en subsuelo, distintas medidas.', img: '/img/storage_ph.webp' },
   ],
   objetivos: ['Renta', 'Uso propio', 'Revalorización', 'Diversificar capital'],
 }
@@ -143,7 +148,6 @@ export const NIVELES = [
 ]
 
 export const FORM = {
-  eyebrow: 'Contacto',
   title: ['Hablemos', 'de tu inversión.'],
   body: 'Dejanos tus datos y un asesor comercial te contacta por WhatsApp con la lista de precios, planos y disponibilidad.',
   unidad: [

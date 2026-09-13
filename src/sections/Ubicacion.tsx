@@ -1,29 +1,30 @@
 import { LINKS, UBICACION } from '@/content'
-import { PatternImage, Section, Title } from '@/components/Brand'
+import { PatternImage, Section, TextLink, Title } from '@/components/Brand'
 
 export function Ubicacion() {
   return (
     <Section id="ubicacion" meta="Ubicación estratégica">
       <div className="mt-10 grid gap-10 lg:grid-cols-12">
         <div className="lg:col-span-7">
-          <p className="label opacity-70 mb-4">{UBICACION.eyebrow}</p>
           <Title lines={UBICACION.title} />
-          <p className="mt-8 max-w-lg text-lg font-light leading-relaxed text-paper/85">{UBICACION.body}</p>
+          <p className="mt-8 max-w-lg text-lg leading-relaxed text-paper/85">{UBICACION.body}</p>
         </div>
 
-        <div className="lg:col-span-5 lg:pt-16">
-          <p className="label opacity-70 mb-4">Distancias</p>
-          <ul className="border-t border-paper/20">
-            {UBICACION.distancias.map((d) => (
-              <li key={d.lugar} className="flex items-baseline justify-between py-3 border-b border-paper/20">
-                <span className="text-lg font-light">{d.lugar}</span>
-                <span className="display text-5xl">{d.km}</span>
-              </li>
-            ))}
-          </ul>
-          <p className="label mt-6 opacity-70 leading-relaxed">
-            Santa Teresa · acceso Barrio San Matías · a 50 m del Camino de los Lagos
-          </p>
+        <div className="lg:col-span-5 lg:pt-6">
+          <table className="w-full border-t border-paper/20">
+            <caption className="label text-left pb-4 text-paper/70">Distancias desde BLACK</caption>
+            <tbody>
+              {UBICACION.distancias.map((d) => (
+                <tr key={d.lugar} className="border-b border-paper/20">
+                  <th scope="row" className="py-3 text-left text-lg font-normal">
+                    {d.lugar}
+                  </th>
+                  <td className="py-3 text-right display text-5xl leading-none tabular-nums">{d.km}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <p className="label mt-6 text-paper/70">Santa Teresa · acceso Barrio San Matías · a 50 m del Camino de los Lagos</p>
         </div>
       </div>
 
@@ -37,16 +38,15 @@ export function Ubicacion() {
             referrerPolicy="no-referrer-when-downgrade"
             style={{ filter: 'grayscale(1) invert(0.92) contrast(1.05)' }}
           />
-          <a
+          <TextLink
             href={LINKS.maps}
-            target="_blank"
-            rel="noopener"
-            className="absolute bottom-3 left-3 label bg-ink/80 text-paper px-3 py-2 hover:bg-paper hover:text-ink transition-colors"
+            external
+            className="absolute bottom-3 left-3 label bg-ink text-paper px-3 py-2 hover:bg-paper hover:text-ink hover:no-underline transition-colors"
           >
-            Abrir en Google Maps ↗
-          </a>
+            Abrir en Google Maps
+          </TextLink>
         </div>
-        <PatternImage src="/img/vista_vuelo_2.jpg" alt="Vista aérea del proyecto entre el verde de Escobar" seed={11} />
+        <PatternImage src="/img/vista_vuelo_2.webp" alt="Vista aérea del proyecto entre el verde de Escobar" edge="right" width="25%" />
       </div>
     </Section>
   )
