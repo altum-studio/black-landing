@@ -16,7 +16,7 @@
 - Color: `--color-ink #000000`, `--color-paper #ffffff`. Opacidades funcionales: texto secundario 85/80, terciario 60–70, inactivo 45–50 (≥ 3:1 en display), bordes 15–20 %.
 - Espaciado: escala Tailwind (4/8/16/24/32/48/64). Secciones `py-16 md:py-24`; contenedor 1440 px con `px-5 md:px-10 lg:px-14`.
 - Sin sombras. Sin radios salvo las morfologías del manual (semicírculo, círculo, cuadrado, cuarto).
-- Morfologías: el cliente prefirió las ventanas circulares (celdas negras enmascaradas sobre el render) a la tira de semielipses literal del manual; la versión literal quedó en el historial (commit 0e1e0d7) por si se retoma.
+- Morfologías: el cliente prefirió la grilla de ventanas de la primera versión (cuartos, semicírculos, círculos y cuadrados sobre el render) a la tira de semielipses literal del manual; la versión literal quedó en el historial (commit 0e1e0d7) por si se retoma.
 - Movimiento: `--ease-out-expo cubic-bezier(0.16,1,0.3,1)`. Lenis lerp 0.09. Sin reveals por sección.
 
 ## Components
@@ -24,7 +24,7 @@
 |---|---|---|
 | Meta (etiqueta de esquina) | "BLACK PASEO DE COMPRAS · SECCIÓN · 2026", reemplaza al eyebrow | live |
 | Logo / LogoTiles / GrupoBlack | SVG vectoriales extraídos del manual (págs. 4, 5 y 14), pintados con currentColor; `--logo-bg` para los cuadros y la caja de +BLACK | live |
-| ModuleStrip / PatternImage | Tira de celdas negras con ventanas circulares (máscaras radiales) sobre el borde de un render; la imagen se ve a través de los círculos. Elegida por el cliente frente a la tira literal del manual | live |
+| PatternImage | Grilla 6×4 sobre el render (primera versión): celdas tapadas en negro con ventana de cuarto, semicírculo o círculo, o tapadas del todo; distribución por semilla. Elegida por el cliente frente a la tira literal del manual | live |
 | Stats (marquee) | Cinta de cifras (cifra Six Caps + palabra) en loop infinito, pausa en hover, estática con reduced-motion | live |
 | LineClaim | "TU LUGAR DE ——— ENCUENTRO" con línea, del manual y el cartel | live |
 | Button (solid/outline/dark/outlineDark) | 48 px, etiqueta 12 px, sin radio; foco con outline currentColor | live |

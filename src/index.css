@@ -103,16 +103,6 @@ body {
     background: #ffffff;
   }
 
-  /* Tira de módulos con ventanas: contenedor de consulta para que las celdas sean cuadradas. */
-  .strip {
-    container-type: size;
-  }
-  .strip-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-auto-rows: 50cqw;
-    width: 100%;
-  }
 }
 
 /* ── El único momento de entrada: coreografía de carga del hero. ──

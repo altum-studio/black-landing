@@ -1,85 +1,72 @@
 /**
- * Recursos gráficos: tira de módulos con ventanas circulares sobre el borde de una
- * imagen (celdas del color de la sección; el render se ve a través de los círculos),
- * y el claim con línea "TU LUGAR DE ——— ENCUENTRO" del manual.
+ * Recursos gráficos de la landing.
+ *
+ * - PatternImage: "intervención de imágenes" de la primera versión. El render se ve a
+ *   través de una grilla de módulos: algunas celdas quedan tapadas por el color de la
+ *   sección con una ventana en forma de cuarto, semicírculo o círculo, o tapadas del
+ *   todo (cuadrado). La distribución sale de una semilla, así cada imagen queda
+ *   siempre igual y se puede ajustar cambiando `seed`.
+ * - LineClaim: "TU LUGAR DE ——— ENCUENTRO" con línea, del manual y el cartel.
  */
-import type { CSSProperties } from 'react'
 
-type Win = { r: string; cx: string; cy: string } | null
+type Shape = 'quarter' | 'half' | 'circle' | 'square'
 
-/* Bloque A: un círculo grande formado por cuatro cuartos. */
-const CIRCLE_BLOCK: Win[] = [
-  { r: '50cqw', cx: '100%', cy: '100%' },
-  { r: '50cqw', cx: '0%', cy: '100%' },
-  { r: '50cqw', cx: '100%', cy: '0%' },
-  { r: '50cqw', cx: '0%', cy: '0%' },
-]
-/* Bloque B: dos círculos chicos, cada uno partido en dos semicírculos. */
-const LENS_BLOCK: Win[] = [
-  { r: '25cqw', cx: '50%', cy: '100%' },
-  { r: '25cqw', cx: '50%', cy: '100%' },
-  { r: '25cqw', cx: '50%', cy: '0%' },
-  { r: '25cqw', cx: '50%', cy: '0%' },
-]
-
-function winStyle(w: Win): CSSProperties | undefined {
-  if (!w) return undefined
-  const g = `radial-gradient(circle ${w.r} at ${w.cx} ${w.cy}, transparent 99%, #000 100%)`
-  return { WebkitMaskImage: g, maskImage: g }
+const WINDOW: Record<Shape, string> = {
+  circle: 'rounded-full',
+  half: 'rounded-b-full',
+  quarter: 'rounded-br-full',
+  square: '',
 }
 
-export function ModuleStrip({
-  edge = 'right',
-  width = '25%',
-  fill = 'bg-ink',
-  blocks = 12,
-  className = '',
-}: {
-  edge?: 'right' | 'left'
-  width?: string
-  fill?: string
-  blocks?: number
-  className?: string
-}) {
-  const cells: Win[] = []
-  for (let b = 0; b < blocks; b++) cells.push(...(b % 2 === 0 ? CIRCLE_BLOCK : LENS_BLOCK))
-  return (
-    <div
-      aria-hidden
-      className={`strip absolute inset-y-0 overflow-hidden ${edge === 'right' ? 'right-0' : 'left-0'} ${className}`}
-      style={{ width }}
-    >
-      <div className="strip-grid">
-        {cells.map((w, i) => (
-          <div key={i} className={fill} style={winStyle(w)} />
-        ))}
-      </div>
-    </div>
-  )
-}
-
-/** Imagen con la tira de ventanas circulares sobre uno de sus bordes. */
 export function PatternImage({
   src,
   alt,
-  edge = 'right',
-  width = '25%',
+  cols = 6,
+  rows = 4,
+  seed = 3,
   bg = 'bg-ink',
-  aspect = '16 / 9',
+  imgAspect = 16 / 9,
   className = '',
   priority = false,
 }: {
   src: string
   alt: string
-  edge?: 'right' | 'left'
-  width?: string
+  cols?: number
+  rows?: number
+  seed?: number
   bg?: string
-  aspect?: string
+  /** Proporción real de la imagen, para que la ventana muestre exactamente lo que hay debajo. */
+  imgAspect?: number
   className?: string
   priority?: boolean
 }) {
+  const cells: (Shape | null)[] = []
+  let x = seed * 7919 + 104729
+  for (let i = 0; i < cols * rows; i++) {
+    x = (x * 1103515245 + 12345) % 2147483648
+    const v = x % 10
+    cells.push(v < 5 ? null : v < 7 ? 'quarter' : v < 8 ? 'half' : v < 9 ? 'circle' : 'square')
+  }
+
+  // La imagen de fondo se ajusta con object-cover al contenedor (cols/rows). Cada ventana
+  // pinta el mismo recorte, calculado en unidades de celda, para que coincida con la base.
+  const ca = cols / rows
+  const dispW = imgAspect >= ca ? rows * imgAspect : cols
+  const dispH = imgAspect >= ca ? rows : cols / imgAspect
+  const slice = (i: number) => {
+    const c = i % cols
+    const r = Math.floor(i / cols)
+    const ox = -(c + (dispW - cols) / 2)
+    const oy = -(r + (dispH - rows) / 2)
+    return {
+      backgroundImage: `url(${src})`,
+      backgroundSize: `${dispW * 100}% ${dispH * 100}%`,
+      backgroundPosition: `${(ox / (1 - dispW)) * 100}% ${(oy / (1 - dispH)) * 100}%`,
+    }
+  }
+
   return (
-    <div className={`relative overflow-hidden ${className}`} style={{ aspectRatio: aspect }}>
+    <div className={`relative overflow-hidden ${className}`} style={{ aspectRatio: `${cols} / ${rows}` }}>
       <img
         src={src}
         alt={alt}
@@ -88,7 +75,17 @@ export function PatternImage({
         decoding="async"
         fetchPriority={priority ? 'high' : 'auto'}
       />
-      <ModuleStrip edge={edge} width={width} fill={bg} />
+      <div className="absolute inset-0 grid" style={{ gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))` }} aria-hidden>
+        {cells.map((s, i) => (
+          <div key={i} className="relative">
+            {s && (
+              <div className={`absolute inset-0 ${bg}`}>
+                {s !== 'square' && <div className={`w-full h-full ${WINDOW[s]}`} style={slice(i)} />}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
