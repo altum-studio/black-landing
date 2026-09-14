@@ -68,7 +68,7 @@ export function Button({
   target?: string
 }) {
   const base =
-    'inline-flex items-center justify-center gap-3 h-12 px-6 label text-[12px] transition-colors duration-200 select-none'
+    'inline-flex items-center justify-center gap-2 sm:gap-3 h-12 px-6 label text-[11px] sm:text-[12px] tracking-[0.12em] sm:tracking-[0.18em] whitespace-nowrap transition-colors duration-200 select-none'
   const v = {
     solid: 'bg-paper text-ink hover:bg-paper/85',
     outline: 'border border-paper text-paper hover:bg-paper hover:text-ink',
