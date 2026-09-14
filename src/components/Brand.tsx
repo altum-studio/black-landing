@@ -152,6 +152,7 @@ export function Title({ lines, className = '', size }: { lines: string[]; classN
       {lines.map((l, i) => (
         <span key={i} className="line" style={{ ['--i' as string]: i } as CSSProperties}>
           <span>{l}</span>
+          {i < lines.length - 1 ? ' ' : null}
         </span>
       ))}
     </h2>

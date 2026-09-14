@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+
+# Rastreadores de buscadores de IA: permitidos (la página se sirve pre-renderizada).
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://blackpaseodecompras.com/sitemap.xml

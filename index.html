@@ -1,9 +1,27 @@
 <!doctype html>
-<html lang="es">
+<html lang="es-AR" class="no-js">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#000000" />
+    <script>
+      // Decide la intro antes del primer pintado (el HTML llega pre-renderizado).
+      // ONCE en true: sólo la primera carga de cada pestaña; en false (modo revisión) siempre.
+      ;(function () {
+        var d = document.documentElement
+        d.classList.remove('no-js')
+        var ONCE = false
+        var show = !matchMedia('(prefers-reduced-motion: reduce)').matches
+        if (ONCE && show) {
+          try {
+            show = !sessionStorage.getItem('black-intro')
+            if (show) sessionStorage.setItem('black-intro', '1')
+          } catch (e) {}
+        }
+        d.style.setProperty('--hero-delay', show ? '3.95s' : '0s')
+        if (show) d.classList.add('is-loading', 'has-intro')
+      })()
+    </script>
     <link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=2" />
@@ -11,10 +29,10 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2" />
     <link rel="manifest" href="/site.webmanifest?v=2" />
 
-    <title>BLACK Paseo de Compras · Escobar · Locales comerciales en pozo</title>
+    <title>Locales comerciales en pozo en Escobar | BLACK Paseo de Compras</title>
     <meta
       name="description"
-      content="BLACK Paseo de Compras: 17.000 m², 125 locales y 450 cocheras en Escobar, corredor Puertos del Lago. Cines, gimnasio, cowork, gastronomía y rooftop. Venta en pozo, entrega mayo 2028."
+      content="125 locales de 50 a 138 m², 450 cocheras, cines, gimnasio y rooftop en Av. de los Lagos, Escobar. Venta en pozo, entrega mayo 2028. Pedí precios por WhatsApp."
     />
     <link rel="canonical" href="https://blackpaseodecompras.com/" />
 
@@ -23,11 +41,126 @@
     <meta property="og:title" content="BLACK Paseo de Compras · Tu lugar de encuentro" />
     <meta
       property="og:description"
-      content="Un nuevo hito comercial en Escobar. 17.000 m² · 125 locales · 450 cocheras. Venta en pozo."
+      content="125 locales de 50 a 138 m², 450 cocheras, cines, gimnasio y rooftop en Av. de los Lagos, Escobar. Venta en pozo, entrega mayo 2028. Pedí precios por WhatsApp."
     />
     <meta property="og:image" content="https://blackpaseodecompras.com/img/hero.jpg" />
     <meta property="og:locale" content="es_AR" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Locales comerciales en pozo en Escobar | BLACK Paseo de Compras" />
+    <meta name="twitter:image" content="https://blackpaseodecompras.com/img/hero.jpg" />
+    <meta name="geo.region" content="AR-B" />
+    <meta name="geo.placename" content="Belén de Escobar" />
+    <meta name="geo.position" content="-34.3674458;-58.7548218" />
+
+    <script type="application/ld+json">
+{
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "ShoppingCenter",
+          "@id": "https://blackpaseodecompras.com/#black",
+          "name": "BLACK Paseo de Compras",
+          "alternateName": "Paseo comercial Black",
+          "url": "https://blackpaseodecompras.com/",
+          "image": "https://blackpaseodecompras.com/img/hero.jpg",
+          "logo": "https://blackpaseodecompras.com/favicon-512.png",
+          "description": "Paseo comercial de 17.000 m² en Belén de Escobar, corredor Puertos del Lago: 125 locales de 50 a 138 m², 450 cocheras, cines, gimnasio, market, cowork, gastronomía y rooftop. Venta en pozo, entrega estimada mayo 2028.",
+          "telephone": "+54 11 3002-7781",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Av. de los Lagos",
+            "addressLocality": "Belén de Escobar",
+            "addressRegion": "Buenos Aires",
+            "postalCode": "1625",
+            "addressCountry": "AR"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": -34.3674458,
+            "longitude": -58.7548218
+          },
+          "hasMap": "https://maps.app.goo.gl/eijdmFAH4Dit6ae7A",
+          "sameAs": [
+            "https://black.virtual2sold.com/"
+          ],
+          "brand": {
+            "@type": "Organization",
+            "name": "Grupo +Black"
+          },
+          "areaServed": [
+            "Escobar",
+            "Belén de Escobar",
+            "Puertos del Lago",
+            "Ingeniero Maschwitz",
+            "Zona Norte de Buenos Aires"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://blackpaseodecompras.com/#web",
+          "url": "https://blackpaseodecompras.com/",
+          "name": "BLACK Paseo de Compras",
+          "inLanguage": "es-AR",
+          "about": {
+            "@id": "https://blackpaseodecompras.com/#black"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "¿Dónde queda BLACK Paseo de Compras?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "BLACK está sobre la Av. de los Lagos, en Belén de Escobar, Partido de Escobar, en el corredor Puertos del Lago. Queda a 1 km de Fincas de Lago, a 2 km de San Matías y El Cantón, a 3 km de Puertos del Lago y a 4 km de Golf Maschwitz Club."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Cuándo se entrega el paseo de compras?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "La entrega estimada es mayo de 2028. Los locales se venden en pozo, con precios en dólares a la fecha de publicación y disponibilidad que se actualiza en tiempo real."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Qué locales se venden y de qué superficie son?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Son 125 locales comerciales modulables de 50 a 138 m², distribuidos en módulos de 8 por nave, más de 200 unidades de storage en el segundo subsuelo y 450 cocheras, 230 de ellas bajo nivel."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Qué tiene BLACK además de locales?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Cuatro salas de cine con foyer en doble altura, un gimnasio de más de 1.000 m², market en planta baja, cowork en dos niveles, patio gastronómico y rooftop. Más del 60 % de la construcción es en seco, con energía renovable, dársenas de carga para autos eléctricos y seguridad CCTV las 24 horas."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Quién desarrolla y quién comercializa BLACK?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Desarrolla Grupo +Black, de Escobar, y comercializa Coldwell Banker, teléfono 11 3002-7781. BLACK es un paseo comercial de 17.000 m² cubiertos, concebido como destino de alta gama y no como un shopping estándar."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Cómo consulto precios y disponibilidad?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Completá el formulario de esta página y un asesor comercial te contacta por WhatsApp con la lista de precios, los planos y la disponibilidad. También podés recorrer el showroom virtual en 3D antes de consultar."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
 
     <!-- Tipografías del Manual de Marca 2026: Six Caps (display) + Barlow (cuerpo) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -46,6 +179,7 @@
     />
   </head>
   <body>
+    <div id="intro"></div>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

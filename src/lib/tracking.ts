@@ -1,6 +1,8 @@
 /**
  * GA4 + Meta Pixel. Sólo se inyectan si las variables de entorno están definidas
- * (ver .env.example). Los eventos de lead se disparan desde el formulario.
+ * (ver .env.example). Los eventos de lead se disparan desde el formulario y, en
+ * paralelo, el servidor los reenvía a Meta por Conversions API (api/lead.ts) con el
+ * mismo event_id para que Meta los deduplique.
  */
 declare global {
   interface Window {
@@ -12,6 +14,7 @@ declare global {
 
 const GA4 = import.meta.env.VITE_GA4_ID as string | undefined
 const PIXEL = import.meta.env.VITE_META_PIXEL_ID as string | undefined
+const FBC_KEY = 'black_fbc'
 
 export function installTracking() {
   if (GA4) {
@@ -35,9 +38,41 @@ export function installTracking() {
   }
 }
 
-export function trackLead(params: Record<string, string>) {
-  window.gtag?.('event', 'generate_lead', params)
-  window.fbq?.('track', 'Lead', params)
+/**
+ * Guarda el fbclid de la URL (llega desde un anuncio de Meta) como fbc, para que el
+ * lead que se envía después por CAPI quede atribuido al clic aunque el Pixel esté bloqueado.
+ */
+export function captureClickIds() {
+  try {
+    const fbclid = new URLSearchParams(location.search).get('fbclid')
+    if (fbclid) localStorage.setItem(FBC_KEY, `fb.1.${Date.now()}.${fbclid}`)
+  } catch {
+    /* almacenamiento no disponible */
+  }
+}
+
+function cookie(name: string) {
+  return document.cookie.match(new RegExp(`(?:^|; )${name}=([^;]*)`))?.[1]
+}
+
+/** Identificadores de Meta disponibles en el navegador (para deduplicar y atribuir en CAPI). */
+export function getMetaIds() {
+  let stored: string | null = null
+  try {
+    stored = localStorage.getItem(FBC_KEY)
+  } catch {
+    /* sin storage */
+  }
+  return { fbp: cookie('_fbp'), fbc: cookie('_fbc') || stored || undefined }
+}
+
+export function newEventId() {
+  return typeof crypto !== 'undefined' && 'randomUUID' in crypto ? crypto.randomUUID() : `lead_${Date.now()}_${Math.random().toString(36).slice(2)}`
+}
+
+export function trackLead(params: Record<string, string>, eventId: string) {
+  window.gtag?.('event', 'generate_lead', { ...params, transaction_id: eventId })
+  window.fbq?.('track', 'Lead', { content_name: 'BLACK Paseo de Compras', ...params }, { eventID: eventId })
 }
 
 export function trackCta(name: string) {

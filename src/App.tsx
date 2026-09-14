@@ -1,17 +1,14 @@
-import { useState } from 'react'
-import { Loader } from './components/Loader'
 import { Nav } from './sections/Nav'
 import { Hero, Stats } from './sections/Hero'
 import { Mix, Proyecto, Sustentable } from './sections/Proyecto'
 import { Ubicacion } from './sections/Ubicacion'
 import { Contacto } from './sections/Contacto'
+import { Faq } from './sections/Faq'
 import { Footer } from './sections/Footer'
 
-export default function App({ intro = false }: { intro?: boolean }) {
-  const [loading, setLoading] = useState(intro)
+export default function App() {
   return (
     <>
-      {loading && <Loader onDone={() => setLoading(false)} />}
       <Nav />
       <main>
         <Hero />
@@ -21,6 +18,7 @@ export default function App({ intro = false }: { intro?: boolean }) {
         <Ubicacion />
         <Sustentable />
         <Contacto />
+        <Faq />
       </main>
       <Footer />
     </>

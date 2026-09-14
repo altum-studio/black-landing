@@ -1,28 +1,29 @@
 import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import { createRoot, hydrateRoot } from 'react-dom/client'
 import Lenis from 'lenis'
 import './index.css'
 import App from './App'
-import { installTracking } from './lib/tracking'
+import { Loader } from './components/Loader'
+import { captureClickIds, installTracking } from './lib/tracking'
 
 installTracking()
+captureClickIds()
 
-// Intro (pantalla de carga). INTRO_ONCE_PER_SESSION en true la muestra sólo la primera
-// vez en cada pestaña; en false (modo revisión) se reproduce en cada carga.
-// Nunca se muestra con movimiento reducido.
-const INTRO_ONCE_PER_SESSION = false
+// La intro se decide en un script inline de index.html (antes del primer pintado);
+// acá sólo se monta en su propia raíz (#intro), fuera del HTML pre-renderizado,
+// para no romper la hidratación. Nunca con prefers-reduced-motion.
 const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-let showIntro = !reduced
-if (INTRO_ONCE_PER_SESSION) {
-  try {
-    showIntro = !reduced && !sessionStorage.getItem('black-intro')
-    if (showIntro) sessionStorage.setItem('black-intro', '1')
-  } catch {
-    showIntro = !reduced
-  }
+if (document.documentElement.classList.contains('has-intro')) {
+  const introRoot = createRoot(document.getElementById('intro')!)
+  introRoot.render(
+    <Loader
+      onDone={() => {
+        document.documentElement.classList.remove('has-intro')
+        setTimeout(() => introRoot.unmount(), 0)
+      }}
+    />,
+  )
 }
-// La coreografía del hero espera a que termine la intro.
-document.documentElement.style.setProperty('--hero-delay', showIntro ? '3.95s' : '0s')
 
 // Scroll con inercia (Lenis). Se omite si el visitante pidió menos movimiento.
 if (!reduced) {
@@ -34,8 +35,13 @@ if (!reduced) {
   requestAnimationFrame(raf)
 }
 
-createRoot(document.getElementById('root')!).render(
+// En producción el HTML llega pre-renderizado (plugins/prerender.ts) y se hidrata.
+// En desarrollo #root está vacío y se renderiza desde cero.
+const rootEl = document.getElementById('root')!
+const app = (
   <StrictMode>
-    <App intro={showIntro} />
-  </StrictMode>,
+    <App />
+  </StrictMode>
 )
+if (rootEl.hasChildNodes()) hydrateRoot(rootEl, app)
+else createRoot(rootEl).render(app)

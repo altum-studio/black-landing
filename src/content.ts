@@ -17,7 +17,8 @@ export const LINKS = {
 export const WHATSAPP_NUMBER =
   (import.meta.env.VITE_WHATSAPP_NUMBER as string | undefined) || '5491130027781'
 
-export const LEAD_ENDPOINT = (import.meta.env.VITE_LEAD_ENDPOINT as string | undefined) || ''
+/** Endpoint que recibe el lead (POST JSON). Por defecto la función /api/lead de Vercel, que reenvía a Meta CAPI. */
+export const LEAD_ENDPOINT = (import.meta.env.VITE_LEAD_ENDPOINT as string | undefined) ?? '/api/lead'
 
 export const HERO = {
   kicker: 'Locales comerciales en pozo · Escobar · Corredor Puertos del Lago',
@@ -130,6 +131,37 @@ export const FORM = {
     { value: 'mas_150', label: 'Más de USD 150.000' },
   ],
 }
+
+/**
+ * Preguntas frecuentes. La primera oración de cada respuesta es la respuesta directa.
+ * Debe coincidir con el FAQPage (JSON-LD) de index.html.
+ */
+export const FAQ = [
+  {
+    q: '¿Dónde queda BLACK Paseo de Compras?',
+    a: 'BLACK está sobre la Av. de los Lagos, en Belén de Escobar, Partido de Escobar, en el corredor Puertos del Lago. Queda a 1 km de Fincas de Lago, a 2 km de San Matías y El Cantón, a 3 km de Puertos del Lago y a 4 km de Golf Maschwitz Club.',
+  },
+  {
+    q: '¿Cuándo se entrega el paseo de compras?',
+    a: 'La entrega estimada es mayo de 2028. Los locales se venden en pozo, con precios en dólares a la fecha de publicación y disponibilidad que se actualiza en tiempo real.',
+  },
+  {
+    q: '¿Qué locales se venden y de qué superficie son?',
+    a: 'Son 125 locales comerciales modulables de 50 a 138 m², distribuidos en módulos de 8 por nave, más de 200 unidades de storage en el segundo subsuelo y 450 cocheras, 230 de ellas bajo nivel.',
+  },
+  {
+    q: '¿Qué tiene BLACK además de locales?',
+    a: 'Cuatro salas de cine con foyer en doble altura, un gimnasio de más de 1.000 m², market en planta baja, cowork en dos niveles, patio gastronómico y rooftop. Más del 60 % de la construcción es en seco, con energía renovable, dársenas de carga para autos eléctricos y seguridad CCTV las 24 horas.',
+  },
+  {
+    q: '¿Quién desarrolla y quién comercializa BLACK?',
+    a: 'Desarrolla Grupo +Black, de Escobar, y comercializa Coldwell Banker, teléfono 11 3002-7781. BLACK es un paseo comercial de 17.000 m² cubiertos, concebido como destino de alta gama y no como un shopping estándar.',
+  },
+  {
+    q: '¿Cómo consulto precios y disponibilidad?',
+    a: 'Completá el formulario de esta página y un asesor comercial te contacta por WhatsApp con la lista de precios, los planos y la disponibilidad. También podés recorrer el showroom virtual en 3D antes de consultar.',
+  },
+]
 
 export const FOOTER = {
   desarrolla: 'Grupo +Black',

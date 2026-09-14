@@ -1,5 +1,5 @@
 import { FORM, LEAD_ENDPOINT, WHATSAPP_NUMBER } from '@/content'
-import { trackLead } from './tracking'
+import { getMetaIds, newEventId, trackLead } from './tracking'
 
 export type Lead = {
   nombre: string
@@ -25,18 +25,31 @@ export function buildWhatsAppUrl(lead: Lead) {
 }
 
 /**
- * Envía el lead. Si hay endpoint configurado se hace POST (JSON) y, pase lo que pase,
- * se abre WhatsApp para no perder el contacto.
- * TODO BACKEND: reemplazar el endpoint por Supabase/CRM cuando esté definido.
+ * Registra el lead: evento Lead en Pixel/GA4 con un event_id, y POST al endpoint
+ * (por defecto /api/lead, que lo reenvía a Meta CAPI con el mismo event_id). Pase lo
+ * que pase, el formulario abre WhatsApp para no perder el contacto.
+ * TODO CRM: el mismo POST puede alimentar Supabase o el CRM cuando esté definido.
  */
 export async function submitLead(lead: Lead) {
-  trackLead({ unidad: lead.unidad, objetivo: lead.objetivo, capital: lead.capital })
+  const eventId = newEventId()
+  trackLead({ unidad: lead.unidad, objetivo: lead.objetivo, capital: lead.capital }, eventId)
   if (LEAD_ENDPOINT) {
+    const { fbp, fbc } = getMetaIds()
     try {
       await fetch(LEAD_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...lead, source: 'landing', ts: new Date().toISOString(), url: location.href }),
+        body: JSON.stringify({
+          ...lead,
+          event_id: eventId,
+          fbp,
+          fbc,
+          source: 'landing',
+          ts: new Date().toISOString(),
+          url: location.href,
+          referrer: document.referrer || undefined,
+          user_agent: navigator.userAgent,
+        }),
         keepalive: true,
       })
     } catch {

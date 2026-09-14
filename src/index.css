@@ -246,6 +246,16 @@ html.is-loading {
   animation-play-state: paused;
 }
 
+/* Mientras la intro todavía no montó (HTML pre-renderizado, JS en camino): pantalla negra,
+   igual al primer fotograma del video, para que no se vea el hero antes de tiempo. */
+html.has-intro #intro:empty::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: #000;
+  z-index: 100;
+}
+
 @layer components {
   /* ── Reveals ligados al scroll (una sola vez, cuando el bloque entra en pantalla) ──
      .reveal-lines: las líneas de un titular suben, como en el hero.
@@ -364,4 +374,28 @@ html.is-loading {
   .unfold .grow {
     grid-template-rows: 1fr;
   }
+}
+
+/* Sin JavaScript no hay reveals: el contenido pre-renderizado se muestra completo. */
+.no-js .rise,
+.no-js .rise > span,
+.no-js .enter {
+  animation: none;
+}
+.no-js .rise {
+  clip-path: none;
+}
+.no-js .reveal-lines .line,
+.no-js .reveal-lines .line > span,
+.no-js .stagger > *,
+.no-js .unfold,
+.no-js .unfold .grow,
+.no-js .win-anim ellipse {
+  transition: none;
+  transform: none;
+  opacity: 1;
+  clip-path: none;
+}
+.no-js .unfold .grow {
+  grid-template-rows: 1fr;
 }

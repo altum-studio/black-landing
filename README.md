@@ -32,7 +32,7 @@ src/
 ├── components/logos/     # LogoMark, LogoDisplay, LogoGrupo: SVG extraídos del manual de marca (no editar a mano)
 ├── sections/             # Nav · Hero+Stats · Proyecto+Mix+Sustentable · Ubicacion · Grupo · Inversion · Contacto · Footer
 ├── lib/lead.ts           # armado del mensaje de WhatsApp + POST opcional a un endpoint
-└── lib/tracking.ts       # GA4 + Meta Pixel (sólo si hay env vars)
+└── lib/tracking.ts       # GA4 + Meta Pixel + event_id/fbc para CAPI (sólo si hay env vars)
 public/img/               # renders web (WebP 1800px; hero con srcset 960/1600/2400) tomados de Drive › Grupo BLACK › 01_PRODUCCION_VISUAL › Renders_Finales
 ```
 
@@ -42,10 +42,28 @@ El formulario replica los campos del "Black form" de Meta (unidad, objetivo, cap
 WhatsApp). Al enviar:
 
 1. Abre WhatsApp (`wa.me/<VITE_WHATSAPP_NUMBER>`) con el mensaje prearmado.
-2. Si `VITE_LEAD_ENDPOINT` está definido, hace un `POST` JSON con el lead (para CRM / Supabase).
-3. Dispara `generate_lead` (GA4) y `Lead` (Meta Pixel) si hay IDs configurados.
+2. Hace un `POST` JSON a `VITE_LEAD_ENDPOINT` (por defecto `/api/lead`, función edge de Vercel) con el lead,
+   un `event_id`, `fbp`/`fbc` (el `fbclid` del anuncio se guarda al aterrizar), URL y user agent.
+3. Dispara `generate_lead` (GA4) y `Lead` (Meta Pixel) con ese mismo `event_id`.
+4. `api/lead.ts` reenvía el `Lead` a **Meta Conversions API** (teléfono y nombre hasheados SHA-256, IP, UA,
+   fbp/fbc, `action_source: website`) si existen `META_PIXEL_ID` y `META_CAPI_TOKEN`; Meta deduplica
+   contra el Pixel por `event_id`. Sin esas variables la función responde 204 y no hace nada.
 
 Variables en `.env.example`. En Vercel se cargan en *Settings → Environment Variables*.
+
+## SEO / AEO
+
+- **Pre-render**: `plugins/prerender.ts` renderiza `<App />` con `react-dom/server` al terminar `vite build` y lo
+  inyecta en `dist/index.html`; el cliente hidrata (`hydrateRoot`). Google, Meta y los rastreadores de IA
+  (que no ejecutan JS) reciben todo el contenido en el HTML. Sin JavaScript la página se ve completa
+  (clase `no-js`). En desarrollo (`bun dev`) no hay pre-render.
+- **Intro**: se decide en un script inline del `<head>` (antes del primer pintado) y se monta en `#intro`,
+  fuera del árbol hidratado. El flag `ONCE` de ese script controla "una vez por sesión" vs "siempre".
+- **Head**: título con keyword al frente, descripción ≤160 caracteres, `lang="es-AR"`, canonical, OG/Twitter,
+  geo tags y JSON-LD (`ShoppingCenter` con dirección, coordenadas y mapa; `WebSite`; `FAQPage`).
+- **FAQ** visible (`src/sections/Faq.tsx`, contenido en `FAQ` de `content.ts`): debe decir exactamente lo
+  mismo que el `FAQPage` del `index.html` (Google penaliza el marcado que no coincide con lo visible).
+- `public/robots.txt` (permite todo, incluidos GPTBot/ClaudeBot/PerplexityBot) y `public/sitemap.xml`.
 
 ## Deploy
 
