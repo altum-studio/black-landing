@@ -27,6 +27,7 @@
 | PatternImage | Intervención de imágenes del manual (pág. 11): 4 columnas que se angostan a la derecha (2.85 · 2.75 · 1.8 · 1), ventana = mitad derecha de una elipse anclada al borde izquierdo de cada celda, fila principal ≈ 2× la columna ancha y filas parciales. Máscara SVG; fuera de las ventanas, el color de la sección | live |
 | Stats (marquee) | Cinta de cifras (cifra Six Caps + palabra) en loop infinito, pausa en hover, estática con reduced-motion | live |
 | LineClaim | "TU LUGAR DE ——— ENCUENTRO" con línea, del manual y el cartel | live |
+| Loader | Intro de marca en CSS/SVG con los trazados del logo (`logos/LogoParts.ts`), `mix-blend-mode: difference` para la inversión; `--hero-delay` retrasa la coreografía del hero | live |
 | Button (solid/outline/dark/outlineDark) | 48 px, etiqueta 12 px, sin radio; foco con outline currentColor | live |
 | TextLink | Texto + flecha SVG, subrayado en hover | live |
 | Índice + imagen (Mix) | Mobile: cada punto se despliega al entrar en pantalla (título, texto, imagen). Desktop: la lista es el control y la imagen fija responde a hover/foco/tap | live |
@@ -47,7 +48,8 @@
 ## Microinteraction Inventory
 | Interaction | Trigger/Rules/Feedback/Loops | Fix | Status |
 |---|---|---|---|
-| Carga del hero | Al montar: título sube por líneas, kicker/lead/CTAs entran, tira se imprime (0.45 s + 35 ms/celda) | — | live |
+| Intro (pantalla de carga) | Réplica en CSS del video "Outro BLACK": contorno de BLACK se dibuja (0–0.9 s), se rellena (1.05 s), círculo blanco desde abajo a la derecha invierte el logo (1.2–1.75 s), PASEO DE COMPRAS sube (1.6–2 s), círculo negro desde abajo a la izquierda (3.3–3.85 s), fundido (3.95–4.4 s). Una vez por sesión; nunca con reduced-motion | — | live |
+| Carga del hero | Al terminar la intro (o al montar si no hay intro): título sube por líneas, kicker/lead/CTAs entran | — | live |
 | Índice de programas | Hover/foco/tap → imagen cruza en 500 ms, texto activo a 100 % | — | live |
 | Tabs de niveles | Click → imagen cambia, marcador cuadrado se rellena, descripción con aria-live | — | live |
 | Nav | Scroll > 40 px → barra sólida; sección visible → subrayado | — | live |
