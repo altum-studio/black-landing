@@ -3,7 +3,25 @@
   "headers": [
     {
       "source": "/img/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "black-landing-three.vercel.app"
+        }
+      ],
+      "destination": "https://blackpaseodecompras.com/$1",
+      "permanent": true
     }
   ]
 }

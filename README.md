@@ -50,8 +50,9 @@ Variables en `.env.example`. En Vercel se cargan en *Settings → Environment Va
 ## Deploy
 
 Vercel, proyecto conectado al repo `altum-studio/black-landing`. Cada push a `main` publica.
-Dominio: `blackpaseodecompras.com` (DNS en DonWeb). Para el subdominio de prueba, CNAME a
-`cname.vercel-dns.com`; para la raíz, registro A a `76.76.21.21`.
+Dominio en producción desde el 14/09/2026: **https://blackpaseodecompras.com** (`www` redirige a la raíz,
+y `black-landing-three.vercel.app` redirige al dominio). DNS en DonWeb: registro A de la raíz a Vercel
+y CNAME `www` → `cname.vercel-dns.com`; el CNAME `virtual` (showroom de Urbania) no se toca.
 
 ## Diseño y auditorías
 
