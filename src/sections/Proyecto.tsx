@@ -1,34 +1,39 @@
-import { useState } from 'react'
+import { useState, type CSSProperties } from 'react'
 import { MIX, PROYECTO, SUSTENTABLE } from '@/content'
-import { Section, Title } from '@/components/Brand'
+import { InView, Section, Title } from '@/components/Brand'
 import { PatternImage } from '@/components/Patterns'
+
+const idx = (i: number) => ({ ['--i' as string]: i }) as CSSProperties
 
 export function Proyecto() {
   return (
     <Section id="proyecto" meta="El proyecto">
-      <div className="mt-10 grid gap-10 lg:grid-cols-12">
+      <div className="mt-10 grid gap-8 lg:gap-10 lg:grid-cols-12">
         <Title lines={PROYECTO.title} className="lg:col-span-7" />
-        <div className="lg:col-span-5 lg:pt-6 space-y-5 text-lg leading-relaxed text-paper/85 max-w-md">
-          {PROYECTO.body.map((p) => (
-            <p key={p}>{p}</p>
+        <InView as="div" className="stagger lg:col-span-5 lg:pt-6 space-y-5 text-lg leading-relaxed text-paper/85 max-w-md">
+          {PROYECTO.body.map((p, i) => (
+            <p key={p} style={idx(i)}>
+              {p}
+            </p>
           ))}
-        </div>
+        </InView>
       </div>
 
-      <div className="mt-14 grid gap-4 md:grid-cols-12">
+      <div className="mt-10 md:mt-14 grid gap-3 md:gap-4 md:grid-cols-12">
         <PatternImage
           src="/img/ext_3.webp"
           alt="Patio central con escaleras y locales en doble altura"
           aspect={1.5}
           className="md:col-span-8"
         />
-        <div className="md:col-span-4 grid gap-4 grid-cols-2 md:grid-cols-1">
+        <InView as="div" className="stagger md:col-span-4 grid gap-3 md:gap-4 grid-cols-2 md:grid-cols-1">
           <img
             src="/img/int_6.webp"
             alt="Espacio gastronómico con barra"
             className="w-full aspect-[3/2] object-cover"
             loading="lazy"
             decoding="async"
+            style={idx(0)}
           />
           <img
             src="/img/int_5.webp"
@@ -36,26 +41,30 @@ export function Proyecto() {
             className="w-full aspect-[3/2] object-cover"
             loading="lazy"
             decoding="async"
+            style={idx(1)}
           />
-        </div>
+        </InView>
       </div>
     </Section>
   )
 }
 
-/* Índice de programas: la lista es el control, la imagen responde. */
+/**
+ * Índice de programas. En mobile cada punto se despliega al entrar en pantalla
+ * (título, texto e imagen). En desktop la lista es el control y la imagen fija responde.
+ */
 export function Mix() {
   const [i, setI] = useState(0)
   return (
     <Section id="mix" meta="Mix comercial" tone="light">
       <Title lines={['Un destino', 'multi-uso.']} className="mt-10" />
 
-      <div className="mt-12 grid gap-10 lg:grid-cols-12 lg:items-start">
+      <div className="mt-10 lg:mt-12 grid gap-10 lg:grid-cols-12 lg:items-start">
         <ol className="lg:col-span-5 border-t border-ink/15">
           {MIX.map((m, k) => {
             const active = i === k
             return (
-              <li key={m.title} className="border-b border-ink/15">
+              <InView as="li" key={m.title} className="unfold border-b border-ink/15">
                 <button
                   type="button"
                   onMouseEnter={() => setI(k)}
@@ -63,23 +72,25 @@ export function Mix() {
                   onClick={() => setI(k)}
                   aria-expanded={active}
                   className={`w-full text-left py-4 flex items-baseline justify-between gap-6 transition-colors duration-200 ${
-                    active ? 'text-ink' : 'text-ink/45 hover:text-ink'
+                    active ? 'text-ink' : 'text-ink lg:text-ink/45 lg:hover:text-ink'
                   }`}
                 >
                   <span className="display text-5xl leading-none">{m.title}</span>
                   <span className="label whitespace-nowrap shrink-0 text-ink/60">{m.tag}</span>
                 </button>
-                <div className={active ? 'block' : 'hidden'}>
-                  <p className="font-light text-ink/80 leading-relaxed pb-5 pr-6 max-w-md">{m.body}</p>
-                  <img
-                    src={m.img}
-                    alt={m.alt}
-                    className="lg:hidden w-full aspect-[3/2] object-cover mb-5"
-                    loading="lazy"
-                    decoding="async"
-                  />
+                <div className={`grow ${active ? '' : 'lg:hidden'}`}>
+                  <div>
+                    <p className="font-light text-ink/80 leading-relaxed pb-5 pr-6 max-w-md">{m.body}</p>
+                    <img
+                      src={m.img}
+                      alt={m.alt}
+                      className="lg:hidden w-full aspect-[16/10] object-cover mb-6"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
                 </div>
-              </li>
+              </InView>
             )
           })}
         </ol>
@@ -109,7 +120,7 @@ export function Mix() {
 export function Sustentable() {
   return (
     <Section id="sustentable" meta="Rooftop y sostenibilidad" tone="light">
-      <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:items-end">
+      <div className="mt-10 grid gap-8 lg:gap-10 lg:grid-cols-12 lg:items-end">
         <PatternImage
           src="/img/ext_1.webp"
           alt="Terraza verde del rooftop"
@@ -120,14 +131,14 @@ export function Sustentable() {
         <Title lines={SUSTENTABLE.title} className="lg:col-span-5" />
       </div>
 
-      <ul className="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-x-8 border-t border-ink/15">
-        {SUSTENTABLE.items.map((it) => (
-          <li key={it.title} className="py-8 border-b border-ink/15 lg:border-b-0">
+      <InView as="ul" className="stagger mt-10 lg:mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-x-8 border-t border-ink/15">
+        {SUSTENTABLE.items.map((it, k) => (
+          <li key={it.title} className="py-6 lg:py-8 border-b border-ink/15 lg:border-b-0" style={idx(k)}>
             <h3 className="display text-5xl">{it.title}</h3>
             <p className="mt-3 font-light text-ink/80 leading-relaxed max-w-xs">{it.body}</p>
           </li>
         ))}
-      </ul>
+      </InView>
     </Section>
   )
 }

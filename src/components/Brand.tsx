@@ -1,4 +1,5 @@
-import type { CSSProperties, ReactNode } from 'react'
+import type { CSSProperties, ElementType, ReactNode } from 'react'
+import { useInView } from '@/lib/useInView'
 
 import { LogoDisplay } from './logos/LogoDisplay'
 import { LogoGrupo } from './logos/LogoGrupo'
@@ -142,15 +143,37 @@ export function Section({
   )
 }
 
-/* ── Titular display de una o más líneas ── */
+/* ── Titular display: las líneas suben al entrar en pantalla (mismo gesto que el hero) ── */
 export function Title({ lines, className = '', size }: { lines: string[]; className?: string; size?: string }) {
+  const [ref, inView] = useInView<HTMLHeadingElement>()
   return (
-    <h2 className={`display ${size ?? 'text-[clamp(64px,9.5vw,152px)]'} ${className}`}>
+    <h2 ref={ref} className={`display reveal-lines ${inView ? 'is-in' : ''} ${size ?? 'text-[clamp(64px,9.5vw,152px)]'} ${className}`}>
       {lines.map((l, i) => (
-        <span key={i} className="block">
-          {l}
+        <span key={i} className="line" style={{ ['--i' as string]: i } as CSSProperties}>
+          <span>{l}</span>
         </span>
       ))}
     </h2>
+  )
+}
+
+/* ── Envoltorio que recibe la clase is-in al entrar en pantalla (para .stagger / .unfold) ── */
+export function InView({
+  as: Tag = 'div',
+  className = '',
+  style,
+  children,
+  ...rest
+}: {
+  as?: ElementType
+  className?: string
+  style?: CSSProperties
+  children: ReactNode
+} & Record<string, unknown>) {
+  const [ref, inView] = useInView<HTMLElement>()
+  return (
+    <Tag ref={ref} className={`${className} ${inView ? 'is-in' : ''}`} style={style} {...rest}>
+      {children}
+    </Tag>
   )
 }

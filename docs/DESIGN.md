@@ -17,7 +17,7 @@
 - Espaciado: escala Tailwind (4/8/16/24/32/48/64). Secciones `py-16 md:py-24`; contenedor 1440 px con `px-5 md:px-10 lg:px-14`.
 - Sin sombras. Sin radios salvo las morfologías del manual (semicírculo, círculo, cuadrado, cuarto).
 - Morfologías: formato definitivo = página 11 del manual (imagen vista a través de columnas de semielipses que se angostan a la derecha). Descartados: bloques 2×2 de círculos, grilla aleatoria 6×4 y tira de semielipses blancas sobre el borde (todo en el historial).
-- Movimiento: `--ease-out-expo cubic-bezier(0.16,1,0.3,1)`. Lenis lerp 0.09. Sin reveals por sección.
+- Movimiento: `--ease-out-expo cubic-bezier(0.16,1,0.3,1)`. Lenis lerp 0.09. Reveals ligados al scroll, una sola vez por bloque y con un gesto propio de cada cosa (no un fade genérico): títulos que suben por líneas (`.reveal-lines`, mismo gesto que el hero), listas escalonadas (`.stagger`), ítems del mix que se despliegan en alto (`.unfold`/.grow`), ventanas de las imágenes que se abren desde su anclaje (`.win-anim`). Todo se desactiva con `prefers-reduced-motion`.
 
 ## Components
 | Component | Decision | Status |
@@ -29,7 +29,7 @@
 | LineClaim | "TU LUGAR DE ——— ENCUENTRO" con línea, del manual y el cartel | live |
 | Button (solid/outline/dark/outlineDark) | 48 px, etiqueta 12 px, sin radio; foco con outline currentColor | live |
 | TextLink | Texto + flecha SVG, subrayado en hover | live |
-| Índice + imagen (Mix) | Lista display como control; imagen sticky que responde a hover/foco/tap | live |
+| Índice + imagen (Mix) | Mobile: cada punto se despliega al entrar en pantalla (título, texto, imagen). Desktop: la lista es el control y la imagen fija responde a hover/foco/tap | live |
 | Form | Campos de línea inferior, mensajes en castellano, WhatsApp síncrono al enviar | live |
 
 ## UX Audit Findings
@@ -53,3 +53,4 @@
 | Nav | Scroll > 40 px → barra sólida; sección visible → subrayado | — | live |
 | Botones | Hover: inversión de color 200 ms; foco visible con outline | — | live |
 | Envío del form | Abre WhatsApp; confirmación con enlace de respaldo | — | live |
+| Reveals al scroll | Al entrar en pantalla: títulos suben por líneas (1 s, 90 ms entre líneas), listas escalonadas (80 ms), mix se despliega (grid-rows 0fr→1fr), ventanas de imagen escalan desde el anclaje (70 ms por columna) | — | live |

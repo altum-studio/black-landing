@@ -42,6 +42,7 @@
 | Logos armados con tipografía en vez de los del manual | 2 | Vectores extraídos del PDF del manual (marca apilada, display con cuadros, GRUPO +BLACK) | done |
 | Recursos del manual aplicados literalmente no gustaron al cliente | 1 | Se vuelve a las ventanas circulares; sin gráfica en el hero; patrón radial fuera del footer | done |
 | Aviso legal demasiado largo | 1 | Resumido a lo esencial | done |
+| Mobile: footer de 1.003 px, mapa de 281 px, sin movimiento al scrollear | 2 | Footer compacto (659 px), mapa a 72svh, reveals ligados al scroll en títulos, mix, listas e imágenes | done |
 
 ## Lead Capture
 Form de 5 campos que replica el "Black form" de Meta. Al enviar abre WhatsApp con el mensaje prearmado (unidad, objetivo, capital), POST opcional a `VITE_LEAD_ENDPOINT`, eventos `generate_lead` (GA4) y `Lead` (Meta). Sin scorecard: el capital y el objetivo ya califican el lead para Coldwell.

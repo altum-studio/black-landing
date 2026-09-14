@@ -10,7 +10,8 @@
  *   y abajo. Fuera de las ventanas queda el color de la sección.
  * - LineClaim: "TU LUGAR DE ——— ENCUENTRO" con línea, del manual y el cartel.
  */
-import { useId } from 'react'
+import { useId, type CSSProperties } from 'react'
+import { useInView } from '@/lib/useInView'
 
 /** Secuencia de anchos de columna, de izquierda a derecha (manual pág. 9 y 11). */
 const COLS = [2.85, 2.75, 1.8, 1]
@@ -57,10 +58,11 @@ export function PatternImage({
   priority?: boolean
 }) {
   const id = useId()
+  const [ref, inView] = useInView<HTMLDivElement>('0px 0px -20% 0px')
   const n = repeat ?? Math.max(1, Math.round(0.55 * aspect))
   const { W, T, cells } = buildCells(n)
   return (
-    <div className={`relative overflow-hidden ${className}`} style={{ aspectRatio: `${aspect}` }}>
+    <div ref={ref} className={`relative overflow-hidden win-anim ${inView ? 'is-in' : ''} ${className}`} style={{ aspectRatio: `${aspect}` }}>
       <img
         src={src}
         alt={alt}
@@ -78,7 +80,14 @@ export function PatternImage({
             <rect x="0" y="0" width={W} height={T} fill="#fff" />
             {cells.map((c, i) => (
               <svg key={i} x={c.x} y={c.y} width={c.w} height={c.h} viewBox={`${c.x} ${c.y} ${c.w} ${c.h}`} preserveAspectRatio="none">
-                <ellipse cx={c.cx} cy={c.cy} rx={c.rx} ry={c.ry} fill="#000" />
+                <ellipse
+                  cx={c.cx}
+                  cy={c.cy}
+                  rx={c.rx}
+                  ry={c.ry}
+                  fill="#000"
+                  style={{ ['--i' as string]: Math.floor(i / 3) } as CSSProperties}
+                />
               </svg>
             ))}
           </mask>
