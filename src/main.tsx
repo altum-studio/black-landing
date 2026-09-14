@@ -7,14 +7,19 @@ import { installTracking } from './lib/tracking'
 
 installTracking()
 
-// Intro (pantalla de carga): una vez por sesión y nunca con movimiento reducido.
+// Intro (pantalla de carga). INTRO_ONCE_PER_SESSION en true la muestra sólo la primera
+// vez en cada pestaña; en false (modo revisión) se reproduce en cada carga.
+// Nunca se muestra con movimiento reducido.
+const INTRO_ONCE_PER_SESSION = false
 const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-let showIntro = false
-try {
-  showIntro = !reduced && !sessionStorage.getItem('black-intro')
-  if (showIntro) sessionStorage.setItem('black-intro', '1')
-} catch {
-  showIntro = !reduced
+let showIntro = !reduced
+if (INTRO_ONCE_PER_SESSION) {
+  try {
+    showIntro = !reduced && !sessionStorage.getItem('black-intro')
+    if (showIntro) sessionStorage.setItem('black-intro', '1')
+  } catch {
+    showIntro = !reduced
+  }
 }
 // La coreografía del hero espera a que termine la intro.
 document.documentElement.style.setProperty('--hero-delay', showIntro ? '3.95s' : '0s')
