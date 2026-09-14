@@ -23,7 +23,7 @@ export function Footer() {
             <div>
               <p className="label text-paper/60 mb-2 md:mb-3">Comercializa</p>
               <p className="text-base md:text-lg font-semibold uppercase tracking-[0.08em]">{FOOTER.comercializa}</p>
-              <a href={`tel:+54${FOOTER.telefono.replace(/\D/g, '')}`} className="block mt-1 underline-offset-[6px] hover:underline">
+              <a href={`tel:+54${FOOTER.telefono.replace(/\D/g, '')}`} className="inline-block mt-1 py-3 -my-3 underline-offset-[6px] hover:underline">
                 {FOOTER.telefono}
               </a>
             </div>
@@ -50,9 +50,9 @@ export function Footer() {
           </div>
         </div>
 
-        <p className="mt-8 md:mt-16 text-[11px] md:text-xs leading-relaxed text-paper/55 max-w-4xl">{FOOTER.disclaimer}</p>
+        <p className="mt-8 md:mt-16 text-xs leading-relaxed text-paper/60 max-w-4xl">{FOOTER.disclaimer}</p>
 
-        <div className="mt-6 md:mt-8 flex flex-wrap justify-between gap-x-6 gap-y-2 label text-[10px] md:text-[12px] text-paper/50">
+        <div className="mt-6 md:mt-8 flex flex-wrap justify-between gap-x-6 gap-y-2 label text-paper/55">
           <span>© 2026 BLACK Paseo de Compras · Grupo +Black</span>
           <span>Sitio por Altum Studio</span>
         </div>

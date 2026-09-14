@@ -54,7 +54,7 @@ export function Contacto() {
               <dt className="label text-paper/60">Comercializa</dt>
               <dd className="mt-2 text-lg font-semibold uppercase tracking-[0.08em]">{FOOTER.comercializa}</dd>
               <dd>
-                <a href={`tel:+54${FOOTER.telefono.replace(/\D/g, '')}`} className="underline-offset-[6px] hover:underline">
+                <a href={`tel:+54${FOOTER.telefono.replace(/\D/g, '')}`} className="inline-block py-3 -my-3 underline-offset-[6px] hover:underline">
                   {FOOTER.telefono}
                 </a>
               </dd>

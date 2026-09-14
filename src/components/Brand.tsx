@@ -34,7 +34,8 @@ export function Meta({ left, right }: { left: string; right?: string }) {
   return (
     <div className="label flex items-center justify-between gap-6 opacity-70">
       <span>
-        <b className="font-semibold">Black</b> Paseo de compras · {left}
+        <b className="font-semibold">Black</b>
+        <span className="hidden sm:inline"> Paseo de compras</span> · {left}
       </span>
       <span>{right ?? '2026'}</span>
     </div>
@@ -107,7 +108,7 @@ export function TextLink({
       onClick={onClick}
       target={external ? '_blank' : undefined}
       rel={external ? 'noopener' : undefined}
-      className={`inline-flex items-center gap-2 underline-offset-[6px] decoration-1 hover:underline ${className}`}
+      className={`inline-flex items-center gap-2 py-[13px] -my-[13px] underline-offset-[6px] decoration-1 hover:underline ${className}`}
     >
       {children}
       <Arrow />

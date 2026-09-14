@@ -87,7 +87,7 @@ body {
 
   /* Etiquetas del manual: mayúscula, tracking ancho, chicas. */
   .label {
-    @apply font-sans uppercase text-[12px] font-medium;
+    @apply font-sans uppercase text-[13px] md:text-[12px] font-medium;
     letter-spacing: var(--tracking-label);
     line-height: 1.4;
   }
