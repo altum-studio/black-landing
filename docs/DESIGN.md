@@ -55,4 +55,5 @@
 | Nav | Scroll > 40 px → barra sólida; sección visible → subrayado | — | live |
 | Botones | Hover: inversión de color 200 ms; foco visible con outline | — | live |
 | Envío del form | Abre WhatsApp; confirmación con enlace de respaldo | — | live |
+| Mapa embebido | Arranca dormido (iframe sin pointer-events bajo una capa con botón). Clic/toque lo activa; se vuelve a dormir al scrollear la página, con Esc, al tocar "Cerrar mapa" o al salir de pantalla. Desktop 21:8 (máx. 520 px), mobile 62 svh | — | live |
 | Reveals al scroll | Al entrar en pantalla: títulos suben por líneas (1 s, 90 ms entre líneas), listas escalonadas (80 ms), mix se despliega (grid-rows 0fr→1fr), ventanas de imagen escalan desde el anclaje (70 ms por columna) | — | live |
