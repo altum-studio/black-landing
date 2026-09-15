@@ -18,7 +18,7 @@ export function LogoTiles({ className = '', bg = '#000' }: { className?: string;
     <LogoDisplay
       role="img"
       aria-label="BLACK Paseo de Compras"
-      className={`block h-[52px] md:h-[72px] w-auto max-w-full ${className}`}
+      className={`block w-auto max-w-full ${className || 'h-[52px] md:h-[72px]'}`}
       style={bgVar(bg)}
     />
   )
@@ -26,7 +26,7 @@ export function LogoTiles({ className = '', bg = '#000' }: { className?: string;
 
 /* ── Marca del desarrollador GRUPO +BLACK (manual pág. 14) ── */
 export function GrupoBlack({ className = '', bg = '#000' }: { className?: string; bg?: string }) {
-  return <LogoGrupo role="img" aria-label="Grupo +Black" className={`block h-20 w-auto ${className}`} style={bgVar(bg)} />
+  return <LogoGrupo role="img" aria-label="Grupo +Black" className={`block w-auto ${className || 'h-20'}`} style={bgVar(bg)} />
 }
 
 /* ── Etiqueta de esquina, estilo manual: "BLACK PASEO DE COMPRAS · SECCIÓN · 2026" ── */

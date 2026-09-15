@@ -27,18 +27,24 @@ export function Footer() {
             </div>
             <div>
               <p className="label text-paper/60 mb-2 md:mb-3">Comercializa</p>
-              <img
-                src="/img/coldwell-banker.png"
-                alt={FOOTER.comercializa}
-                width={COLDWELL_W}
-                height={COLDWELL_H}
-                loading="lazy"
-                decoding="async"
-                className="h-14 md:h-20 w-auto"
-              />
-              <a href={`tel:+54${FOOTER.telefono.replace(/\D/g, '')}`} className="inline-block mt-3 md:mt-4 py-3 -my-3 underline-offset-[6px] hover:underline">
-                {FOOTER.telefono}
-              </a>
+              {/* Logo + teléfono en una fila de la misma altura que el logo de Grupo +Black, para que la línea de base coincida. */}
+              <div className="flex items-center gap-3 md:gap-4 h-14 md:h-20">
+                <img
+                  src="/img/coldwell-banker.png"
+                  alt={FOOTER.comercializa}
+                  width={COLDWELL_W}
+                  height={COLDWELL_H}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-full w-auto"
+                />
+                <a
+                  href={`tel:+54${FOOTER.telefono.replace(/\D/g, '')}`}
+                  className="py-3 -my-3 text-sm md:text-base whitespace-nowrap underline-offset-[6px] hover:underline"
+                >
+                  {FOOTER.telefono}
+                </a>
+              </div>
             </div>
             <div className="col-span-2 sm:col-span-1">
               <p className="label text-paper/60 mb-2 md:mb-3">Explorar</p>
