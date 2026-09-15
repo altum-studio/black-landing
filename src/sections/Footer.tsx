@@ -1,4 +1,4 @@
-import { FOOTER, LINKS } from '@/content'
+import { FOOTER, LINKS, WHATSAPP_NUMBER } from '@/content'
 import { GrupoBlack, LogoTiles, TextLink } from '@/components/Brand'
 import { LineClaim } from '@/components/Patterns'
 import { LogoAltum } from '@/components/logos/LogoAltum'
@@ -27,24 +27,15 @@ export function Footer() {
             </div>
             <div>
               <p className="label text-paper/60 mb-2 md:mb-3">Comercializa</p>
-              {/* Logo + teléfono en una fila de la misma altura que el logo de Grupo +Black, para que la línea de base coincida. */}
-              <div className="flex items-center gap-3 md:gap-4 h-14 md:h-20">
-                <img
-                  src="/img/coldwell-banker.png"
-                  alt={FOOTER.comercializa}
-                  width={COLDWELL_W}
-                  height={COLDWELL_H}
-                  loading="lazy"
-                  decoding="async"
-                  className="h-full w-auto"
-                />
-                <a
-                  href={`tel:+54${FOOTER.telefono.replace(/\D/g, '')}`}
-                  className="py-3 -my-3 text-sm md:text-base whitespace-nowrap underline-offset-[6px] hover:underline"
-                >
-                  {FOOTER.telefono}
-                </a>
-              </div>
+              <img
+                src="/img/coldwell-banker.png"
+                alt={FOOTER.comercializa}
+                width={COLDWELL_W}
+                height={COLDWELL_H}
+                loading="lazy"
+                decoding="async"
+                className="h-14 md:h-20 w-auto"
+              />
             </div>
             <div className="col-span-2 sm:col-span-1">
               <p className="label text-paper/60 mb-2 md:mb-3">Explorar</p>
@@ -52,6 +43,11 @@ export function Footer() {
                 <li>
                   <TextLink href={LINKS.web3d} external>
                     Showroom 3D
+                  </TextLink>
+                </li>
+                <li>
+                  <TextLink href={`https://wa.me/${WHATSAPP_NUMBER}`} external>
+                    WhatsApp
                   </TextLink>
                 </li>
                 {LINKS.instagram && (
@@ -77,9 +73,10 @@ export function Footer() {
             href="https://altum.studio"
             target="_blank"
             rel="noopener"
-            aria-label="Sitio por Altum Studio"
-            className="inline-flex items-center py-3 -my-3 text-paper/55 hover:text-paper transition-colors"
+            aria-label="Web y marketing por Altum Studio"
+            className="inline-flex items-center gap-2 py-3 -my-3 text-paper/55 hover:text-paper transition-colors"
           >
+            <span>Web y marketing por</span>
             <LogoAltum className="h-3 md:h-[14px] w-auto" />
           </a>
         </div>

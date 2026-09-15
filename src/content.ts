@@ -136,7 +136,8 @@ export const FORM = {
 export const FOOTER = {
   desarrolla: 'Grupo +Black',
   comercializa: 'Coldwell Banker',
-  telefono: '11 3002-7781',
+  /** Teléfono público (mismo número que recibe los leads por WhatsApp). */
+  telefono: '11 2823-7865',
   disclaimer:
     'Las imágenes y renders son representaciones artísticas de carácter ilustrativo; acabados, equipamiento y vegetación no forman parte del precio ni constituyen obligación contractual salvo que se especifiquen en el boleto o contrato. Superficies aproximadas. Precios en USD sujetos a modificación sin previo aviso hasta la firma del instrumento contractual. Cocheras se comercializan por separado. La fecha de entrega estimada y la disponibilidad pueden variar por causas ajenas al desarrollador.',
 }
