@@ -60,9 +60,7 @@ Variables en `.env.example`. En Vercel se cargan en *Settings → Environment Va
 - **Intro**: se decide en un script inline del `<head>` (antes del primer pintado) y se monta en `#intro`,
   fuera del árbol hidratado. El flag `ONCE` de ese script controla "una vez por sesión" vs "siempre".
 - **Head**: título con keyword al frente, descripción ≤160 caracteres, `lang="es-AR"`, canonical, OG/Twitter,
-  geo tags y JSON-LD (`ShoppingCenter` con dirección, coordenadas y mapa; `WebSite`; `FAQPage`).
-- **FAQ** visible (`src/sections/Faq.tsx`, contenido en `FAQ` de `content.ts`): debe decir exactamente lo
-  mismo que el `FAQPage` del `index.html` (Google penaliza el marcado que no coincide con lo visible).
+  geo tags y JSON-LD (`ShoppingCenter` con dirección, coordenadas y mapa; `WebSite`).
 - `public/robots.txt` (permite todo, incluidos GPTBot/ClaudeBot/PerplexityBot) y `public/sitemap.xml`.
 
 ## Deploy

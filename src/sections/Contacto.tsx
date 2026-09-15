@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react'
-import { FOOTER, FORM, LINKS } from '@/content'
+import { FORM, LINKS } from '@/content'
 import { Arrow, Button, Section, TextLink, Title } from '@/components/Brand'
 import { buildWhatsAppUrl, submitLead, type Lead } from '@/lib/lead'
 
@@ -49,25 +49,14 @@ export function Contacto() {
           <Title lines={FORM.title} />
           <p className="mt-8 max-w-md text-lg leading-relaxed text-paper/85">{FORM.body}</p>
 
-          <dl className="mt-10 grid grid-cols-2 gap-6 max-w-md">
-            <div>
-              <dt className="label text-paper/60">Comercializa</dt>
-              <dd className="mt-2 text-lg font-semibold uppercase tracking-[0.08em]">{FOOTER.comercializa}</dd>
-              <dd>
-                <a href={`tel:+54${FOOTER.telefono.replace(/\D/g, '')}`} className="inline-block py-3 -my-3 underline-offset-[6px] hover:underline">
-                  {FOOTER.telefono}
-                </a>
-              </dd>
-            </div>
-            <div>
-              <dt className="label text-paper/60">Showroom virtual</dt>
-              <dd className="mt-2 text-lg">
-                <TextLink href={LINKS.web3d} external>
-                  Recorrer en 3D
-                </TextLink>
-              </dd>
-            </div>
-          </dl>
+          <div className="mt-10 max-w-md border-t border-paper/20 pt-6">
+            <p className="label text-paper/60">Showroom virtual</p>
+            <p className="mt-3 text-xl md:text-2xl leading-snug">
+              <TextLink href={LINKS.web3d} external className="text-left">
+                Recorré el paseo y mirá los locales
+              </TextLink>
+            </p>
+          </div>
         </div>
 
         <form onSubmit={onSubmit} className="lg:col-span-7 lg:pt-6 grid gap-6 md:grid-cols-2">

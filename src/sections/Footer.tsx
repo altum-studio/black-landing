@@ -1,6 +1,11 @@
 import { FOOTER, LINKS } from '@/content'
 import { GrupoBlack, LogoTiles, TextLink } from '@/components/Brand'
 import { LineClaim } from '@/components/Patterns'
+import { LogoAltum } from '@/components/logos/LogoAltum'
+
+/** Logo apilado de Coldwell Banker (public/img/coldwell-banker.png), blanco sobre el footer negro. */
+const COLDWELL_W = 313
+const COLDWELL_H = 320
 
 export function Footer() {
   return (
@@ -22,8 +27,16 @@ export function Footer() {
             </div>
             <div>
               <p className="label text-paper/60 mb-2 md:mb-3">Comercializa</p>
-              <p className="text-base md:text-lg font-semibold uppercase tracking-[0.08em]">{FOOTER.comercializa}</p>
-              <a href={`tel:+54${FOOTER.telefono.replace(/\D/g, '')}`} className="inline-block mt-1 py-3 -my-3 underline-offset-[6px] hover:underline">
+              <img
+                src="/img/coldwell-banker.png"
+                alt={FOOTER.comercializa}
+                width={COLDWELL_W}
+                height={COLDWELL_H}
+                loading="lazy"
+                decoding="async"
+                className="h-14 md:h-20 w-auto"
+              />
+              <a href={`tel:+54${FOOTER.telefono.replace(/\D/g, '')}`} className="inline-block mt-3 md:mt-4 py-3 -my-3 underline-offset-[6px] hover:underline">
                 {FOOTER.telefono}
               </a>
             </div>
@@ -54,7 +67,15 @@ export function Footer() {
 
         <div className="mt-6 md:mt-8 flex flex-wrap justify-between gap-x-6 gap-y-2 label text-paper/55">
           <span>© 2026 BLACK Paseo de Compras · Grupo +Black</span>
-          <span>Sitio por Altum Studio</span>
+          <a
+            href="https://altum.studio"
+            target="_blank"
+            rel="noopener"
+            aria-label="Sitio por Altum Studio"
+            className="inline-flex items-center py-3 -my-3 text-paper/55 hover:text-paper transition-colors"
+          >
+            <LogoAltum className="h-3 md:h-[14px] w-auto" />
+          </a>
         </div>
       </div>
     </footer>
