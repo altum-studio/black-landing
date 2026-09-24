@@ -17,6 +17,10 @@
 
 /* ── Superficies del navegador: selección, caret, scrollbar, foco ── */
 html {
+  /* Fondo negro también en html (no sólo en body): Safari de iOS tiñe la barra de dirección con
+     theme-color y con el color de fondo de la página; color-scheme evita el blanco al cargar. */
+  background: #000000;
+  color-scheme: dark;
   -webkit-text-size-adjust: 100%;
   scrollbar-color: #ffffff #000000;
 }
