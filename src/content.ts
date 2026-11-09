@@ -91,8 +91,9 @@ export const MIX = [
 export const UBICACION = {
   title: ['Llenamos', 'un vacío premium.'],
   body:
-    'Sobre calle Santa Teresa, en el acceso a San Matías y a 50 m del Camino de los Lagos. Una zona que creció en densidad pero no en oferta comercial.',
-  accesos: 'Ingreso y egreso por Ruta San Matías · Ingreso peatonal por calle Santa Teresa · Esquina Av. de los Lagos',
+    'Sobre el Acceso San Matías, a 50 m del Camino de los Lagos y con esquina en la Av. de los Lagos. Una zona que creció en densidad pero no en oferta comercial.',
+  /** Siempre hablar del Acceso San Matías (pedido del cliente): la otra calle del predio no se destaca. */
+  accesos: 'Ingreso y egreso por Acceso San Matías · Esquina Av. de los Lagos · Belén de Escobar, Partido de Escobar',
   distancias: [
     { lugar: 'Fincas de Lago', km: '1 km' },
     { lugar: 'El Cantón', km: '2 km' },

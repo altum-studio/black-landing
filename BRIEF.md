@@ -104,7 +104,7 @@ Manda sobre el press kit y el brochure anterior. Cambios aplicados a la landing:
 | Cocheras | 450 | 400 en total (dato del cliente, 2026-11-09). El brochure dice 120: serían sólo las del subsuelo, a confirmar |
 | Niveles | 4 | 5 |
 | Entrega | mayo 2028 | 2028 |
-| Ubicación | Av. de los Lagos, Belén de Escobar | Sobre calle Santa Teresa, en el acceso a San Matías y a 50 m del Camino de los Lagos. Ingreso/egreso vehicular por Ruta San Matías; peatonal por Santa Teresa; esquina Av. de los Lagos |
+| Ubicación | Av. de los Lagos, Belén de Escobar | Brochure: sobre calle Santa Teresa, en el acceso a San Matías y a 50 m del Camino de los Lagos; ingreso/egreso por Ruta San Matías; esquina Av. de los Lagos. **Regla del cliente (2026-11-09): en la landing se habla siempre del Acceso San Matías; Santa Teresa (que también tiene ingreso vehicular) no se destaca porque es una calle fea.** |
 | Programa | retail, cines, gym +1.000 m², market, cowork, rooftop, storage +200 | PB: market · farmacia · gastronomía · locales. 1º: locales. 2º: salud · cowork · gastronomía. 3º: gimnasio · salón de eventos · rooftop. Subsuelo: storage · caja de seguridad · pileta climatizada |
 | Cines | 4 salas | No aparecen: se quitaron de la landing |
 | Distancias | 5 puntos | 12: Fincas de Lago 1, El Cantón 2, San Matías 2, Farmingdale College 2,5, Puertos del Lago 3, Colegio Del Faro 3, Golf Maschwitz Club 4, Northfield 4, Dover High School 4, Aranjuez 6, Septiembre 6, El Cazador 7 km |
