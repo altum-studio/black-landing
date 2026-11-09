@@ -24,7 +24,7 @@ export const HERO = {
   kicker: 'Locales comerciales en pozo · Escobar · Corredor Puertos del Lago',
   title: ['Tu lugar', 'de encuentro'],
   lead:
-    'Invertí en el nuevo hito comercial de Escobar: más de 10.000 m² cubiertos, más de 100 locales y 120 cocheras en cinco niveles, concebidos como destino de alta gama, no como un mall. Entrega: 2028.',
+    'Invertí en el nuevo hito comercial de Escobar: más de 10.000 m² cubiertos, más de 100 locales y 400 cocheras en cinco niveles, concebidos como destino de alta gama, no como un mall. Entrega: 2028.',
   ctaPrimary: 'Quiero invertir',
   ctaSecondary: 'Recorrer en 3D',
 }
@@ -33,7 +33,7 @@ export const HERO = {
 export const STATS = [
   { value: '+10.000', unit: 'm²', label: 'cubiertos' },
   { value: '+100', unit: '', label: 'locales comerciales' },
-  { value: '120', unit: '', label: 'cocheras' },
+  { value: '400', unit: '', label: 'cocheras' },
   { value: '5', unit: '', label: 'niveles' },
   { value: '2028', unit: '', label: 'entrega' },
   { value: '50 a 138', unit: 'm²', label: 'por módulo' },

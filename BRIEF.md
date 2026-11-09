@@ -101,7 +101,7 @@ Manda sobre el press kit y el brochure anterior. Cambios aplicados a la landing:
 |---|---|---|
 | Superficie cubierta | 17.000 m² | +10.000 m² |
 | Locales comerciales | 125 | +100 (primer nivel: 40 módulos de 50 a 138 m²) |
-| Cocheras | 450 | 120 (exterior + subsuelo) |
+| Cocheras | 450 | 400 en total (dato del cliente, 2026-11-09). El brochure dice 120: serían sólo las del subsuelo, a confirmar |
 | Niveles | 4 | 5 |
 | Entrega | mayo 2028 | 2028 |
 | Ubicación | Av. de los Lagos, Belén de Escobar | Sobre calle Santa Teresa, en el acceso a San Matías y a 50 m del Camino de los Lagos. Ingreso/egreso vehicular por Ruta San Matías; peatonal por Santa Teresa; esquina Av. de los Lagos |
