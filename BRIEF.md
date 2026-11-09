@@ -91,3 +91,23 @@ Mensaje: integración vertical total, 0 intermediarios, 100% control sobre obra 
 4. Incluir sección Expansión (esquina) o no.
 5. Confirmar fecha de entrega mayo 2028 con el cliente.
 6. Qué render aprobado va de hero (el "HERO FINAL" del cartel es el candidato).
+
+
+## Actualización: Brochure_Black_Corregido.ai (2026-11-09)
+
+Manda sobre el press kit y el brochure anterior. Cambios aplicados a la landing:
+
+| Dato | Antes (press kit) | Brochure corregido |
+|---|---|---|
+| Superficie cubierta | 17.000 m² | +10.000 m² |
+| Locales comerciales | 125 | +100 (primer nivel: 40 módulos de 50 a 138 m²) |
+| Cocheras | 450 | 120 (exterior + subsuelo) |
+| Niveles | 4 | 5 |
+| Entrega | mayo 2028 | 2028 |
+| Ubicación | Av. de los Lagos, Belén de Escobar | Sobre calle Santa Teresa, en el acceso a San Matías y a 50 m del Camino de los Lagos. Ingreso/egreso vehicular por Ruta San Matías; peatonal por Santa Teresa; esquina Av. de los Lagos |
+| Programa | retail, cines, gym +1.000 m², market, cowork, rooftop, storage +200 | PB: market · farmacia · gastronomía · locales. 1º: locales. 2º: salud · cowork · gastronomía. 3º: gimnasio · salón de eventos · rooftop. Subsuelo: storage · caja de seguridad · pileta climatizada |
+| Cines | 4 salas | No aparecen: se quitaron de la landing |
+| Distancias | 5 puntos | 12: Fincas de Lago 1, El Cantón 2, San Matías 2, Farmingdale College 2,5, Puertos del Lago 3, Colegio Del Faro 3, Golf Maschwitz Club 4, Northfield 4, Dover High School 4, Aranjuez 6, Septiembre 6, El Cazador 7 km |
+| Sustentabilidad | 4 ítems | "Pensado para durar": seguridad y CCTV 24 h, grupo electrógeno, energía renovable, gestión de residuos, pet friendly, 60 % construcción en seco |
+
+Renders nuevos extraídos del brochure a `public/img/*_2026.webp` (locales, escaleras, cowork, gym, rooftop, pileta). El plano del tercer piso todavía no estaba en el brochure ("falta enviar plano piso 3").

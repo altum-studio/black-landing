@@ -50,3 +50,4 @@
 ## Lead Capture
 Form de 5 campos que replica el "Black form" de Meta. Al enviar abre WhatsApp con el mensaje prearmado (unidad, objetivo, capital), POST a `/api/lead` (Meta CAPI con `event_id` compartido con el Pixel, fbc/fbp, teléfono hasheado), eventos `generate_lead` (GA4) y `Lead` (Meta). Sin scorecard: el capital y el objetivo ya califican el lead para Coldwell.
 | Sección FAQ (6 preguntas + FAQPage) agregada en la pasada SEO | 0 | Retirada a pedido del cliente el 14/09/2026; el JSON-LD FAQPage se quitó con ella | done |
+| Datos desactualizados frente al Brochure corregido (nov 2026): 17.000 m², 125 locales, 450 cocheras, cines, mayo 2028, 5 distancias | 3 | Cifras, programa por nivel, ubicación, distancias (12, en dos columnas), sustentabilidad y renders actualizados desde el brochure; meta description y JSON-LD alineados | done |

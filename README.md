@@ -84,5 +84,5 @@ sin fade-in por sección; Six Caps con line-height 0.9.
 - Handle de Instagram (`LINKS.instagram` en `content.ts`, vacío = no se muestra).
 - Descripción de cada nivel en `NIVELES` (usos por planta).
 - Si se muestran precios (lista de junio 2026 en `BLACK_Listado_Unidades.xlsx`).
-- Fecha de entrega: mayo 2028 (press kit). El disclaimer viejo decía julio 2027.
+- Fecha de entrega: 2028 (Brochure corregido, nov 2026). El press kit decía mayo 2028 y el disclaimer viejo julio 2027.
 - Sección de expansión (esquina lindera) si se aprueba.

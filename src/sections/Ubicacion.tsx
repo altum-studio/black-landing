@@ -3,6 +3,7 @@ import { LINKS, UBICACION } from '@/content'
 import { Arrow, InView, Section, TextLink, Title } from '@/components/Brand'
 
 const idx = (i: number) => ({ ['--i' as string]: i }) as CSSProperties
+const half = Math.ceil(UBICACION.distancias.length / 2)
 
 export function Ubicacion() {
   return (
@@ -15,20 +16,25 @@ export function Ubicacion() {
           </div>
 
           <div className="lg:col-span-5 lg:pt-8">
-            <table className="w-full border-t border-paper/20">
-              <caption className="label text-left pb-3 text-paper/70">Distancias desde BLACK</caption>
-              <InView as="tbody" className="stagger">
-                {UBICACION.distancias.map((d, k) => (
-                  <tr key={d.lugar} className="border-b border-paper/20" style={idx(k)}>
-                    <th scope="row" className="py-2 text-left text-base font-normal">
-                      {d.lugar}
-                    </th>
-                    <td className="py-2 text-right display text-3xl leading-none tabular-nums">{d.km}</td>
-                  </tr>
-                ))}
-              </InView>
-            </table>
-            <p className="label mt-4 text-paper/70">Av. de los Lagos · Belén de Escobar · Partido de Escobar</p>
+            <p className="label pb-3 text-paper/70">Distancias desde BLACK</p>
+            {/* Dos columnas desde sm para que la tabla no supere el alto del texto de la izquierda. */}
+            <div className="grid sm:grid-cols-2 gap-x-8">
+              {[UBICACION.distancias.slice(0, half), UBICACION.distancias.slice(half)].map((col, c) => (
+                <table key={c} className="w-full border-t border-paper/20" aria-label={`Distancias desde BLACK, parte ${c + 1}`}>
+                  <InView as="tbody" className="stagger">
+                    {col.map((d, k) => (
+                      <tr key={d.lugar} className="border-b border-paper/20" style={idx(k)}>
+                        <th scope="row" className="py-2 text-left text-base font-normal">
+                          {d.lugar}
+                        </th>
+                        <td className="py-2 pl-3 text-right display text-3xl leading-none tabular-nums whitespace-nowrap">{d.km}</td>
+                      </tr>
+                    ))}
+                  </InView>
+                </table>
+              ))}
+            </div>
+            <p className="label mt-4 text-paper/70">{UBICACION.accesos}</p>
           </div>
         </div>
       </Section>
@@ -102,7 +108,7 @@ function MapEmbed() {
         )}
       </div>
       <div className="mx-auto max-w-[1440px] px-5 md:px-10 lg:px-14 py-5 md:py-6 flex flex-wrap justify-between gap-x-6 gap-y-3 label text-paper/70">
-        <span>Mapa satelital del showroom virtual · Av. de los Lagos, Belén de Escobar</span>
+        <span>Mapa satelital del showroom virtual · Acceso a San Matías, Escobar</span>
         <TextLink href={LINKS.maps} external className="text-paper">
           Cómo llegar en Google Maps
         </TextLink>
