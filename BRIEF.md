@@ -111,3 +111,27 @@ Manda sobre el press kit y el brochure anterior. Cambios aplicados a la landing:
 | Sustentabilidad | 4 ítems | "Pensado para durar": seguridad y CCTV 24 h, grupo electrógeno, energía renovable, gestión de residuos, pet friendly, 60 % construcción en seco |
 
 Renders nuevos extraídos del brochure a `public/img/*_2026.webp` (locales, escaleras, cowork, gym, rooftop, pileta). El plano del tercer piso todavía no estaba en el brochure ("falta enviar plano piso 3").
+
+
+## Actualización: NUEVA MEMORIA DESCRIPTIVA.docx (2026-11-23)
+
+Manda sobre el brochure corregido en lo que contradice; lo que la memoria no menciona (entrega 2028, distancias, ítems de "Pensado para durar") se mantiene.
+
+| Dato | Brochure corregido | Memoria nueva |
+|---|---|---|
+| Superficie | +10.000 m² cubiertos | Más de 12.000 m² de superficie |
+| Locales | +100, de 50 a 138 m² | Más de 160 locales combinables desde 25, 50 y 138 m² |
+| Estacionamiento | 400 (dato del cliente) | Más de 400 posiciones (cubierto en subsuelo + libre en planta baja) |
+| Frente | – | Más de 280 metros lineales, esquina de la rotonda de Av. de los Lagos |
+| Cines | no figuraban | 4 salas de cine y entretenimiento (primer nivel) |
+| Gimnasio | sin cifra | Más de 1.500 m² (tercer nivel) + anexo con pileta y vestuarios (subsuelo) |
+| Storage | sin cifra | Más de 100 unidades, desde 8,50 m², temperatura estable, cortinas individuales |
+
+Programa por nivel:
+- **Subsuelo:** estacionamiento cubierto, storages, montacargas a todos los niveles, depósitos, cajas de seguridad, anexo gym (pileta y vestuarios), salón de eventos BLACK.
+- **Planta baja:** estacionamiento libre, Fresh Market con isla gourmet, hogar y deco, farmacia, restaurant/café.
+- **Primer nivel:** tiendas deportivas, tiendas de ropa, servicios, 4 salas de cine y entretenimiento.
+- **Segundo nivel:** centro de salud, cowork, restaurant panorámico, bar panorámico, oficinas AAA.
+- **Tercer nivel:** gimnasio, salón para eventos corporativos y privados, guardería, rooftop (acceso directo desde el estacionamiento, lado Acceso San Matías).
+
+A confirmar con el cliente: la memoria nombra un salón de eventos en el subsuelo y otro en el tercer nivel (la landing muestra los dos).

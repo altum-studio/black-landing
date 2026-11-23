@@ -243,7 +243,7 @@ html.is-loading {
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee 48s linear infinite;
+  animation: marquee 60s linear infinite;
 }
 .marquee:hover .marquee-track,
 .marquee:focus-within .marquee-track {

@@ -1,6 +1,7 @@
 /**
  * Todo el copy y los datos de la landing en un solo lugar.
- * Fuentes: Brochure_Black_Corregido.ai (nov 2026, manda sobre lo anterior), Manual de Marca 2026, Press Kit 2026.
+ * Fuentes: NUEVA MEMORIA DESCRIPTIVA.docx (23/11/2026, manda sobre lo anterior), Brochure_Black_Corregido.ai (nov 2026),
+ * Manual de Marca 2026, Press Kit 2026.
  * No inventar cifras: si algo cambia, se cambia acá.
  */
 
@@ -24,74 +25,77 @@ export const HERO = {
   kicker: 'Locales comerciales en pozo · Escobar · Corredor Puertos del Lago',
   title: ['Tu lugar', 'de encuentro'],
   lead:
-    'Invertí en el nuevo hito comercial de Escobar: más de 10.000 m² cubiertos, más de 100 locales y 400 cocheras en cinco niveles, concebidos como destino de alta gama, no como un mall. Entrega: 2028.',
+    'Invertí en el nuevo hito comercial de Escobar: más de 12.000 m², más de 160 locales combinables y más de 400 cocheras en cinco niveles, concebidos como destino de alta gama, no como un mall. Entrega: 2028.',
   ctaPrimary: 'Quiero invertir',
   ctaSecondary: 'Recorrer en 3D',
 }
 
 /** Cinta de cifras en loop (cifra grande + palabra). */
 export const STATS = [
-  { value: '+10.000', unit: 'm²', label: 'cubiertos' },
-  { value: '+100', unit: '', label: 'locales comerciales' },
-  { value: '400', unit: '', label: 'cocheras' },
+  { value: '+12.000', unit: 'm²', label: 'de superficie' },
+  { value: '+160', unit: '', label: 'locales combinables' },
+  { value: 'Desde 25', unit: 'm²', label: 'por local' },
+  { value: '+400', unit: '', label: 'cocheras' },
+  { value: '+280', unit: 'm', label: 'de frente' },
+  { value: '4', unit: '', label: 'salas de cine' },
+  { value: '+1.500', unit: 'm²', label: 'de gimnasio' },
+  { value: '+100', unit: '', label: 'unidades de storage' },
   { value: '5', unit: '', label: 'niveles' },
   { value: '2028', unit: '', label: 'entrega' },
-  { value: '50 a 138', unit: 'm²', label: 'por módulo' },
-  { value: '60%', unit: '', label: 'construcción en seco' },
-  { value: '24 h', unit: '', label: 'seguridad y CCTV' },
 ]
 
 export const PROYECTO = {
   title: ['Un destino,', 'no un mall.'],
   body: [
-    'Arquitectura industrial contemporánea: chapa trapezoidal negra, hormigón y vegetación en canteros que integran el edificio al verde de la zona.',
-    'Naves independientes unidas por una plataforma común que genera espacios sociales, semicubiertos y pergolados. Cinco niveles: market y gastronomía en planta baja, locales comerciales, salud y cowork, gimnasio con salón de eventos y rooftop, y storage con pileta climatizada en el subsuelo.',
+    'Mucho más que un paseo de compras: un desarrollo de usos múltiples, con identidad propia, pensado para convertirse en un nuevo punto de referencia urbano, comercial y social de la zona.',
+    'Arquitectura industrial contemporánea: naves independientes de chapa trapezoidal negra, hormigón y vegetación, unidas por una plataforma común que se recorre de manera fluida y genera espacios sociales, semicubiertos y pergolados.',
+    'Todas las actividades en un solo lugar: comercios, gastronomía, entretenimiento, deporte, salud y bienestar, servicios y hogar.',
   ],
 }
 
-/** Programa por nivel, según el brochure corregido (nov 2026). */
+/** Programa por nivel, según la nueva memoria descriptiva (23/11/2026). */
 export const MIX = [
   {
-    title: 'Market y gastronomía',
+    title: 'Fresh Market y gastronomía',
     tag: 'Planta baja',
-    body: 'Market, farmacia, gastronomía y locales comerciales en el nivel de acceso.',
+    body: 'Fresh Market con isla gourmet, para degustar productos y vivir experiencias gastronómicas mientras hacés las compras. Hogar y deco, farmacia, restaurant y café, con estacionamiento libre.',
     img: '/img/locales_2026.webp',
     alt: 'Circulación de planta baja con locales comerciales a ambos lados',
   },
   {
-    title: 'Locales comerciales',
+    title: 'Tiendas y cines',
     tag: 'Primer nivel',
-    body: '40 módulos de 50 a 138 m², modulables según la superficie que necesite cada marca.',
+    body: 'Tiendas deportivas, tiendas de ropa y servicios, junto a cuatro salas de cine y entretenimiento.',
     img: '/img/escaleras_2026.webp',
     alt: 'Primer nivel con escaleras mecánicas y vista al exterior',
   },
   {
-    title: 'Salud y cowork',
+    title: 'Salud, cowork y oficinas',
     tag: 'Segundo nivel',
-    body: 'Centro de salud, espacios de trabajo colaborativo y gastronomía.',
+    body: 'Centro de salud, cowork y oficinas AAA, con restaurant y bar panorámicos.',
     img: '/img/cowork_2026.webp',
     alt: 'Cowork con mesas de trabajo, barra y ventanales',
   },
   {
     title: 'Gimnasio y rooftop',
     tag: 'Tercer nivel',
-    body: 'Gimnasio, salón de eventos y rooftop.',
+    body: 'Gimnasio de más de 1.500 m², salón para eventos corporativos y privados y guardería. El rooftop suma vistas panorámicas al entorno natural, vegetación y áreas de permanencia, con acceso directo desde el estacionamiento.',
     img: '/img/gym_2026.webp',
     alt: 'Gimnasio en doble altura con equipamiento y luminarias circulares',
   },
   {
     title: 'Storage y pileta',
     tag: 'Subsuelo',
-    body: 'Unidades de storage, cajas de seguridad, pileta climatizada y estacionamiento cubierto.',
+    body: 'Más de 100 unidades de storage desde 8,50 m², con temperatura estable, cortinas de cierre individuales y acceso desde el estacionamiento cubierto. Depósitos, cajas de seguridad, montacargas a todos los niveles, anexo del gimnasio con pileta y vestuarios, y el salón de eventos BLACK.',
     img: '/img/pileta_2026.webp',
-    alt: 'Pileta climatizada cubierta con reposeras y revestimiento de mármol',
+    alt: 'Pileta cubierta del anexo del gimnasio, con reposeras y revestimiento de mármol',
   },
 ]
 
 export const UBICACION = {
   title: ['Llenamos', 'un vacío premium.'],
   body:
-    'Sobre el Acceso San Matías, a 50 m del Camino de los Lagos y con esquina en la Av. de los Lagos. Una zona que creció en densidad pero no en oferta comercial.',
+    'La esquina icónica de la rotonda más importante de la Av. de los Lagos, con más de 280 metros lineales de frente e ingreso por el Acceso San Matías. Una zona que creció en densidad pero no en oferta comercial.',
   /** Siempre hablar del Acceso San Matías (pedido del cliente): la otra calle del predio no se destaca. */
   accesos: 'Ingreso y egreso por Acceso San Matías · Esquina Av. de los Lagos · Belén de Escobar, Partido de Escobar',
   distancias: [
@@ -126,7 +130,7 @@ export const FORM = {
   title: ['Hablemos', 'de tu inversión.'],
   body: 'Dejanos tus datos y un asesor comercial te contacta por WhatsApp con la lista de precios, planos y disponibilidad.',
   unidad: [
-    { value: 'local', label: 'Local comercial (50 a 138 m²)' },
+    { value: 'local', label: 'Local comercial (desde 25 m²)' },
     { value: 'storage', label: 'Storage / depósito privado' },
     { value: 'asesoramiento', label: 'Quiero asesoramiento, no lo tengo definido' },
   ],
